@@ -1,0 +1,20 @@
+{
+  "name": "fish-tank",
+  "version": "0.0.1",
+  "description": "Fish Tank Monitor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andreas Argelius <andreas@argeli.us> (https://argeli.us/)",
+  "license": "MIT",
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "chart.js": "^1.0.2",
+    "firebase": "^2.4.0",
+    "jquery": "^2.2.0",
+    "onsenui": "^2.0.0-beta.5",
+    "vue": "^1.0.15",
+    "watchify": "^3.7.0"
+  }
+}

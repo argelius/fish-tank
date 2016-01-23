@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Fish Tank Monitor</title>
+  <meta name="description" content="A Fish Tank Monitor">
+  <meta name="author" content="Andreas Argelius">
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,500,500italic,700italic,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/onsenui.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="css/onsen-css-components.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="app.css" type="text/css" media="all" />
+</head>
+
+<body id="app">
+  <ons-page modifier="material">
+    <ons-toolbar modifier="material noshadow">
+      <div class="center">Fish Tank</div>
+    </ons-toolbar>
+
+    <ons-tabbar modifier="material" animation="slide" position="top">
+      <ons-tab label="Temp" active="true" page="temp.html"></ons-tab>
+      <ons-tab label="Stats" page="stats.html"></ons-tab>
+    </ons-tabbar>
+  </ons-page>
+
+  <ons-template id="temp.html">
+    <ons-page id="temp" modifier="material">
+      <div id="current-temperature">
+        <ons-list modifier="material">
+          <ons-list-header modifier="material">Temperature scale</ons-list-header>
+
+          <ons-list-item modifier="material">
+            <div class="list__item__left">
+              <label class="radio-button radio-button--material">
+                <input v-model="scale" value="celsius" type="radio" id="celsius" class="radio-button__input radio-button--material__input">
+                <div class="radio-button__checkmark radio-button--material__checkmark"></div>
+              </label>
+            </div>
+            <label for="celsius" class="list__item__center">
+              Celsius
+            </label>
+          </ons-list-item>
+
+          <ons-list-item modifier="material">
+            <div class="list__item__left">
+              <label class="radio-button radio-button--material">
+                <input v-model="scale" value="fahrenheit" type="radio" id="fahrenheit" class="radio-button__input radio-button--material__input">
+                <div class="radio-button__checkmark radio-button--material__checkmark"></div>
+              </label>
+            </div>
+            <label for="fahrenheit" class="list__item__center">
+              Fahrenheit
+            </label>
+          </ons-list-item>
+        </ons-list>
+        <div class="temperature-container">
+          <span v-if="scale === 'celsius'">
+            {{ temperature }}&deg;C
+          </span>
+          <span v-else>
+            {{ celsiusToFahrenheit(temperature) }}&deg;F
+          </span>
+        </div>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="stats.html">
+    <ons-page id="stats" modifier="material">
+      <ons-fab @click="showDateSelectDialog()" position="bottom right">
+        <ons-icon icon="md-calendar"></ons-icon>
+      </ons-fab>
+
+      <h3 style="text-align: center;">Data for {{ date }}</h3>
+
+      <canvas id="temperature-chart"></canvas>
+    </ons-page>
+  </ons-template>
+
+  <ons-dialog modifier="material" id="date-select-dialog" cancelable>
+    <date-select-dialog>
+      <div class="date-select-dialog">
+        <label>
+          <span>Date</span>
+          <input class="text-input text-input--material" type="date" label="Date" v-model="date" placeholder=""></input>
+        </label>
+
+        <ons-button @click="hide()" modifier="material--flat">Ok!</ons-button>
+      </div>
+    </date-select-dialog>
+  </ons-dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

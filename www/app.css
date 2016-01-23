@@ -1,0 +1,45 @@
+.page--material__background {
+  background-color: #fff;
+}
+
+.temperature-container {
+  font-size: 50px;
+  margin-top: 26px;
+  text-align: center;
+}
+
+.date-select-dialog {
+  padding: 25px;
+}
+
+.date-select-dialog > label > span {
+  display: inline-block;
+  width: 55px;
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+.date-select-dialog > label > input {
+  display: inline-block;
+  width: 160px;
+}
+
+.date-select-dialog > ons-button {
+  float: right;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.dialog {
+  width: 270px;
+}
+
+#temperature-chart {
+  width: 90%;
+  margin: 10px;
+  height: 250px;
+}
+
+.fab__icon {
+  position: initial;
+}
