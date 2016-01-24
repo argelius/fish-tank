@@ -42174,7 +42174,7 @@ $(document).on('init', '#stats', function() {
         var to = new Date(Date.parse(this.date)).setHours(24);
         var self = this;
 
-        this.firebaseRef.startAt(from).endAt(to).once('value', function(snapshot) {
+        this.firebaseRef.startAt(from).endAt(to).on('value', function(snapshot) {
           var inc = 1000 * 60 * 15;
           var points = {};
 
