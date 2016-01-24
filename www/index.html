@@ -29,6 +29,14 @@
   <ons-template id="temp.html">
     <ons-page id="temp" modifier="material">
       <div id="current-temperature">
+        <div class="temperature-container">
+          <span v-if="scale === 'celsius'">
+            {{ temperature }}&deg;C
+          </span>
+          <span v-else>
+            {{ celsiusToFahrenheit(temperature) }}&deg;F
+          </span>
+        </div>
         <ons-list modifier="material">
           <ons-list-header modifier="material">Temperature scale</ons-list-header>
 
@@ -56,14 +64,7 @@
             </label>
           </ons-list-item>
         </ons-list>
-        <div class="temperature-container">
-          <span v-if="scale === 'celsius'">
-            {{ temperature }}&deg;C
-          </span>
-          <span v-else>
-            {{ celsiusToFahrenheit(temperature) }}&deg;F
-          </span>
-        </div>
+
       </div>
     </ons-page>
   </ons-template>

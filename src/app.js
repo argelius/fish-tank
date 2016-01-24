@@ -84,10 +84,8 @@ $(document).on('init', '#stats', function() {
       var labels = [],
         values = [];
 
-      for (var i = 0; i <= 24; i++) {
-        var k = i === 24 ? 0 : 45;
-
-        for (var j = 0; j <= k; j += 15) { 
+      for (var i = 0; i < 24; i++) {
+        for (var j = 0; j <= 45; j += 15) {
           if (i % 2 === 0 && j == 0) {
             labels.push((('0' + i).slice(-2) + ':' + ('0' + j).slice(-2)));
           }
