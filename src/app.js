@@ -182,6 +182,10 @@ $(document).on('init', '#stats', function() {
       },
 
       renderChart: function() {
+        if (!date) {
+          return;
+        }
+
         let from = new Date(Date.parse(this.date)).setHours(0);
         let to = new Date(Date.parse(this.date)).setHours(24);
         let self = this;

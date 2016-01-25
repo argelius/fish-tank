@@ -42352,6 +42352,10 @@ $(document).on('init', '#stats', function () {
       },
 
       renderChart: function renderChart() {
+        if (!this.date) {
+          return;
+        }
+
         var from = new Date(Date.parse(this.date)).setHours(0);
         var to = new Date(Date.parse(this.date)).setHours(24);
         var self = this;
