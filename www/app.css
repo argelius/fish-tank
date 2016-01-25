@@ -40,6 +40,10 @@
   width: 270px;
 }
 
+.dialog-container {
+  background-color: white;
+}
+
 #temperature-chart-container {
   margin: 10px;
   height: 50%;
