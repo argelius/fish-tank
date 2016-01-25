@@ -14,10 +14,20 @@
   <link rel="stylesheet" href="app.css" type="text/css" media="all" />
 </head>
 
-<body id="app">
-  <ons-page modifier="material">
+<body>
+  <ons-page id="app" modifier="material">
     <ons-toolbar modifier="material noshadow">
+      <div class="left">
+        <ons-toolbar-button modifier="material">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
       <div class="center">Fish Tank</div>
+      <div class="right">
+        <ons-toolbar-button modifier="material" @click="showSettingsDialog()">
+          <ons-icon icon="md-more-vert"></ons-icon>
+        </ons-toolbar-button>
+      </div>
     </ons-toolbar>
 
     <ons-tabbar modifier="material" animation="slide" position="top">
@@ -29,6 +39,7 @@
   <ons-template id="temp.html">
     <ons-page id="temp" modifier="material">
       <div id="current-temperature">
+        <h3 style="text-align: center;">Current temperature</h3>
         <div class="temperature-container">
           <span v-if="scale === 'celsius'">
             {{ temperature }}&deg;C
@@ -37,34 +48,6 @@
             {{ celsiusToFahrenheit(temperature) }}&deg;F
           </span>
         </div>
-        <ons-list modifier="material">
-          <ons-list-header modifier="material">Temperature scale</ons-list-header>
-
-          <ons-list-item modifier="material">
-            <div class="list__item__left">
-              <label class="radio-button radio-button--material">
-                <input v-model="scale" value="celsius" type="radio" id="celsius" class="radio-button__input radio-button--material__input">
-                <div class="radio-button__checkmark radio-button--material__checkmark"></div>
-              </label>
-            </div>
-            <label for="celsius" class="list__item__center">
-              Celsius
-            </label>
-          </ons-list-item>
-
-          <ons-list-item modifier="material">
-            <div class="list__item__left">
-              <label class="radio-button radio-button--material">
-                <input v-model="scale" value="fahrenheit" type="radio" id="fahrenheit" class="radio-button__input radio-button--material__input">
-                <div class="radio-button__checkmark radio-button--material__checkmark"></div>
-              </label>
-            </div>
-            <label for="fahrenheit" class="list__item__center">
-              Fahrenheit
-            </label>
-          </ons-list-item>
-        </ons-list>
-
       </div>
     </ons-page>
   </ons-template>
@@ -81,17 +64,47 @@
     </ons-page>
   </ons-template>
 
-  <ons-dialog modifier="material" id="date-select-dialog" cancelable>
-    <date-select-dialog>
-      <div class="date-select-dialog">
-        <label>
-          <span>Date</span>
-          <input class="text-input text-input--material" type="date" label="Date" v-model="date" placeholder=""></input>
+  <ons-dialog modifier="material" id="date-select-dialog">
+    <label class="date-select-dialog-label">
+      <span>Date</span>
+      <input class="text-input text-input--material" type="date" label="Date" v-model="date" placeholder=""></input>
+    </label>
+
+    <ons-button @click="hide()" modifier="material--flat">OK</ons-button>
+  </ons-dialog>
+
+  <ons-dialog modifier="material" id="settings-dialog">
+    <ons-list class="settings-dialog-list" modifier="material">
+      <ons-list-header modifier="material">
+        Temperature scale
+      </ons-list-header>
+      <ons-list-item modifier="material">
+        <div class="list__item__left">
+          <label class="radio-button radio-button--material">
+            <input v-model="scale" value="celsius" type="radio" id="celsius" class="radio-button__input radio-button--material__input">
+            <div class="radio-button__checkmark radio-button--material__checkmark"></div>
+          </label>
+        </div>
+        <label for="celsius" class="list__item__center">
+          Celsius
+        </label>
+      </ons-list-item>
+
+      <ons-list-item modifier="material">
+        <div class="list__item__left">
+          <label class="radio-button radio-button--material">
+            <input v-model="scale" value="fahrenheit" type="radio" id="fahrenheit" class="radio-button__input radio-button--material__input">
+            <div class="radio-button__checkmark radio-button--material__checkmark"></div>
+          </label>
+        </div>
+        <label for="fahrenheit" class="list__item__center">
+          Fahrenheit
         </label>
 
-        <ons-button @click="hide()" modifier="material--flat">Ok!</ons-button>
-      </div>
-    </date-select-dialog>
+      </ons-list-item>
+    </ons-list>
+
+    <ons-button @click="hide()" modifier="material--flat">OK</ons-button>
   </ons-dialog>
 
   <script src="app.js"></script>

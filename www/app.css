@@ -8,26 +8,32 @@
   text-align: center;
 }
 
-.date-select-dialog {
-  padding: 25px;
+.date-select-dialog-label {
+  padding: 20px 25px 15px 25px;
+  display: inline-block;
 }
 
-.date-select-dialog > label > span {
+.date-select-dialog-label > span {
   display: inline-block;
   width: 55px;
   opacity: 0.6;
   font-size: 14px;
 }
 
-.date-select-dialog > label > input {
+.date-select-dialog-label > input {
   display: inline-block;
   width: 160px;
 }
 
-.date-select-dialog > ons-button {
+.settings-dialog-list {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.dialog-container > ons-button {
   float: right;
+  margin-right: 10px;
   margin-bottom: 10px;
-  margin-top: 20px;
 }
 
 .dialog {

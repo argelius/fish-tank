@@ -4,19 +4,25 @@ var Firebase = require('firebase');
 var Chart = require('chart.js');
 var $ = require('jquery');
 
-var chartData = {
+var celsiusToFahrenheit = function(celsius) {
+  return Number(1.8 * celsius + 32).toFixed(2);
+}
+
+var globalData = {
   date: (function() {
     var d = new Date();
     var yyyy = d.getFullYear().toString();
     var mm = (d.getMonth()+1).toString(); // getMonth() is zero-based
     var dd  = d.getDate().toString();
     return [yyyy, (mm[1]?mm:'0'+mm[0]), (dd[1]?dd:'0'+dd[0])].join('-'); // padding
-  })()
+  })(),
+  scale: 'celsius',
+  temperature: 0.0
 }
 
 var dateSelectDialog = new Vue({
   el: '#date-select-dialog',
-  data: chartData,
+  data: globalData,
   methods: {
     show: function() {
       this.$el.show();
@@ -28,13 +34,34 @@ var dateSelectDialog = new Vue({
   }
 });
 
+var settingsDialog = new Vue({
+  el: '#settings-dialog',
+  data: globalData,
+  methods: {
+    show: function() {
+      this.$el.show();
+    },
+
+    hide: function() {
+      this.$el.hide();
+    }
+  }
+});
+
+$(document).on('init', '#app', function() {
+  var app = new Vue({
+    el: '#app',
+
+    methods: {
+      showSettingsDialog: settingsDialog.show
+    }
+  });
+});
+
 $(document).on('init', '#temp', function() {
   var app = new Vue({
     el: '#current-temperature',
-    data: {
-      scale: 'celsius',
-      temperature: 0.0
-    },
+    data: globalData,
 
     created: function() {
       this.firebaseRef = new Firebase("https://fish-tank.firebaseio.com/temperature").orderByChild('timestamp').limitToLast(1);
@@ -57,7 +84,7 @@ $(document).on('init', '#temp', function() {
       },
 
       celsiusToFahrenheit: function(celsius) {
-        return Number(1.8 * celsius + 32).toFixed(2);
+        return celsiusToFahrenheit(celsius);
       },
 
       beforeDestroy: function() {
@@ -76,7 +103,7 @@ $(document).on('init', '#stats', function() {
   var app = new Vue({
     el: '#stats',
 
-    data: chartData,
+    data: globalData,
 
     created: function() {
       this.firebaseRef = new Firebase("https://fish-tank.firebaseio.com/temperature").orderByChild('timestamp');
@@ -138,6 +165,9 @@ $(document).on('init', '#stats', function() {
     watch: {
       'date': function() {
         this.renderChart();
+      },
+      'scale': function() {
+        this.renderChart();
       }
     },
 
@@ -172,7 +202,10 @@ $(document).on('init', '#stats', function() {
           points = self.chart.datasets[0].points;
 
           for (var i = 0; i < points.length; i++) {
-            points[i].value = data[i];
+            points[i].value = self.scale === 'celsius' || data[i] === 0.0 ?
+              data[i] :
+              celsiusToFahrenheit(data[i]);
+
           }
 
           self.chart.update();
