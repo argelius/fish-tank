@@ -58,7 +58,9 @@
         <ons-icon icon="md-calendar"></ons-icon>
       </ons-fab>
 
-      <h3 style="text-align: center;">Data for {{ date }}</h3>
+      <h3 v-if="date" style="text-align: center;">Data for {{ date }}</h3>
+      <h3 v-else style="text-align: center;">No date specified</h3>
+
 
       <div id="temperature-chart-container">
         <canvas id="temperature-chart"></canvas>
