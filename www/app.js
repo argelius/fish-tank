@@ -13591,7 +13591,7 @@ return jQuery;
 
 },{}],4:[function(require,module,exports){
 (function (process,global){
-/*! onsenui v2.0.0-beta.5 - 2016-01-08 */
+/*! onsenui v2.0.0-beta.6 - 2016-01-25 */
 /**
  * @license
  * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
@@ -16776,17 +16776,19 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    (global.ons = factory());
 }(this, function () { 'use strict';
 
-   var babelHelpers_typeof = function (obj) {
+   var babelHelpers = {};
+
+   babelHelpers.typeof = function (obj) {
      return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
    };
 
-   var babelHelpers_classCallCheck = function (instance, Constructor) {
+   babelHelpers.classCallCheck = function (instance, Constructor) {
      if (!(instance instanceof Constructor)) {
        throw new TypeError("Cannot call a class as a function");
      }
    };
 
-   var babelHelpers_createClass = (function () {
+   babelHelpers.createClass = (function () {
      function defineProperties(target, props) {
        for (var i = 0; i < props.length; i++) {
          var descriptor = props[i];
@@ -16804,7 +16806,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      };
    })();
 
-   var babelHelpers_inherits = function (subClass, superClass) {
+   babelHelpers.inherits = function (subClass, superClass) {
      if (typeof superClass !== "function" && superClass !== null) {
        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
      }
@@ -16820,7 +16822,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
    };
 
-   var babelHelpers_possibleConstructorReturn = function (self, call) {
+   babelHelpers.possibleConstructorReturn = function (self, call) {
      if (!self) {
        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
      }
@@ -16828,7 +16830,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      return call && (typeof call === "object" || typeof call === "function") ? call : self;
    };
 
-   var babelHelpers_slicedToArray = (function () {
+   babelHelpers.slicedToArray = (function () {
      function sliceIterator(arr, i) {
        var _arr = [];
        var _n = true;
@@ -16866,7 +16868,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      };
    })();
 
-   var babelHelpers_toConsumableArray = function (arr) {
+   babelHelpers.toConsumableArray = function (arr) {
      if (Array.isArray(arr)) {
        for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
 
@@ -16875,6 +16877,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        return Array.from(arr);
      }
    };
+
+   babelHelpers;
 
    var animationOptionsParser = {};
 
@@ -17017,9 +17021,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        } else if (!isNaN(token)) {
          return +token;
        } else if (isObjectString(token)) {
-         return animationOptionsParser.parseObject.apply(animationOptionsParser, [unwrap(token)].concat(babelHelpers_toConsumableArray(methods)));
+         return animationOptionsParser.parseObject.apply(animationOptionsParser, [unwrap(token)].concat(babelHelpers.toConsumableArray(methods)));
        } else if (isArrayString(token)) {
-         return animationOptionsParser.parseArray.apply(animationOptionsParser, [unwrap(token)].concat(babelHelpers_toConsumableArray(methods)));
+         return animationOptionsParser.parseArray.apply(animationOptionsParser, [unwrap(token)].concat(babelHelpers.toConsumableArray(methods)));
        } else {
          error(token, string, originalString);
        }
@@ -17030,9 +17034,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      string = string.trim();
 
      if (isObjectString(string)) {
-       return animationOptionsParser.parseObject.apply(animationOptionsParser, [unwrap(string)].concat(babelHelpers_toConsumableArray(methods)));
+       return animationOptionsParser.parseObject.apply(animationOptionsParser, [unwrap(string)].concat(babelHelpers.toConsumableArray(methods)));
      } else if (isArrayString(string)) {
-       return animationOptionsParser.parseArray.apply(animationOptionsParser, [unwrap(string)].concat(babelHelpers_toConsumableArray(methods)));
+       return animationOptionsParser.parseArray.apply(animationOptionsParser, [unwrap(string)].concat(babelHelpers.toConsumableArray(methods)));
      } else {
        throw new Error('Provided string must be object or array like: ' + string);
      }
@@ -17235,7 +17239,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
      try {
        var result = JSON.parse('' + jsonString);
-       if ((typeof result === 'undefined' ? 'undefined' : babelHelpers_typeof(result)) === 'object' && result !== null) {
+       if ((typeof result === 'undefined' ? 'undefined' : babelHelpers.typeof(result)) === 'object' && result !== null) {
          return result;
        }
      } catch (e) {
@@ -17312,7 +17316,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var DoorLock = (function () {
      function DoorLock() {
        var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-       babelHelpers_classCallCheck(this, DoorLock);
+       babelHelpers.classCallCheck(this, DoorLock);
 
        this._lockList = [];
        this._waitList = [];
@@ -17325,7 +17329,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @return {Function} Callback for unlocking.
       */
 
-     babelHelpers_createClass(DoorLock, [{
+     babelHelpers.createClass(DoorLock, [{
        key: 'lock',
        value: function lock() {
          var _this = this;
@@ -17490,7 +17494,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    var DeviceBackButtonDispatcher = (function () {
      function DeviceBackButtonDispatcher() {
-       babelHelpers_classCallCheck(this, DeviceBackButtonDispatcher);
+       babelHelpers.classCallCheck(this, DeviceBackButtonDispatcher);
 
        this._isEnabled = false;
        this._boundCallback = this._callback.bind(this);
@@ -17500,7 +17504,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * Enable to handle 'backbutton' events.
       */
 
-     babelHelpers_createClass(DeviceBackButtonDispatcher, [{
+     babelHelpers.createClass(DeviceBackButtonDispatcher, [{
        key: 'enable',
        value: function enable() {
          if (!this._isEnabled) {
@@ -17984,7 +17988,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       */
 
      function AnimatorFactory(opts) {
-       babelHelpers_classCallCheck(this, AnimatorFactory);
+       babelHelpers.classCallCheck(this, AnimatorFactory);
 
        this._animators = opts.animators;
        this._baseClass = opts.baseClass;
@@ -18002,7 +18006,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @return {Object/null}
       */
 
-     babelHelpers_createClass(AnimatorFactory, [{
+     babelHelpers.createClass(AnimatorFactory, [{
        key: 'setAnimationOptions',
 
        /**
@@ -18060,7 +18064,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          try {
            if (typeof jsonString === 'string') {
              var result = util.animationOptionsParse(jsonString);
-             if ((typeof result === 'undefined' ? 'undefined' : babelHelpers_typeof(result)) === 'object' && result !== null) {
+             if ((typeof result === 'undefined' ? 'undefined' : babelHelpers.typeof(result)) === 'object' && result !== null) {
                return result;
              } else {
                console.error('"animation-options" attribute must be a JSON object string: ' + jsonString);
@@ -18084,7 +18088,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       */
 
      function Platform() {
-       babelHelpers_classCallCheck(this, Platform);
+       babelHelpers.classCallCheck(this, Platform);
 
        this._renderPlatform = null;
      }
@@ -18094,7 +18098,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param  {string} platform Name of the platform.
       */
 
-     babelHelpers_createClass(Platform, [{
+     babelHelpers.createClass(Platform, [{
        key: 'select',
        value: function select(platform) {
          this._renderPlatform = platform.trim().toLowerCase();
@@ -18119,7 +18123,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        value: function isIOS() {
          if (this._renderPlatform) {
            return this._renderPlatform === 'ios';
-         } else if ((typeof device === 'undefined' ? 'undefined' : babelHelpers_typeof(device)) === 'object') {
+         } else if ((typeof device === 'undefined' ? 'undefined' : babelHelpers.typeof(device)) === 'object') {
            return (/iOS/i.test(device.platform)
            );
          } else {
@@ -18137,7 +18141,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        value: function isAndroid() {
          if (this._renderPlatform) {
            return this._renderPlatform === 'android';
-         } else if ((typeof device === 'undefined' ? 'undefined' : babelHelpers_typeof(device)) === 'object') {
+         } else if ((typeof device === 'undefined' ? 'undefined' : babelHelpers.typeof(device)) === 'object') {
            return (/Android/i.test(device.platform)
            );
          } else {
@@ -18177,7 +18181,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        value: function isWP() {
          if (this._renderPlatform) {
            return this._renderPlatform === 'wp';
-         } else if ((typeof device === 'undefined' ? 'undefined' : babelHelpers_typeof(device)) === 'object') {
+         } else if ((typeof device === 'undefined' ? 'undefined' : babelHelpers.typeof(device)) === 'object') {
            return (/Win32NT|WinCE/i.test(device.platform)
            );
          } else {
@@ -18228,7 +18232,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        value: function isBlackBerry() {
          if (this._renderPlatform) {
            return this._renderPlatform === 'blackberry';
-         } else if ((typeof device === 'undefined' ? 'undefined' : babelHelpers_typeof(device)) === 'object') {
+         } else if ((typeof device === 'undefined' ? 'undefined' : babelHelpers.typeof(device)) === 'object') {
            return (/BlackBerry/i.test(device.platform)
            );
          } else {
@@ -18328,7 +18332,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      }, {
        key: 'isIOS7above',
        value: function isIOS7above() {
-         if ((typeof device === 'undefined' ? 'undefined' : babelHelpers_typeof(device)) === 'object') {
+         if ((typeof device === 'undefined' ? 'undefined' : babelHelpers.typeof(device)) === 'object') {
            return (/iOS/i.test(device.platform) && parseInt(device.version.split('.')[0]) >= 7
            );
          } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -18598,7 +18602,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      };
 
      return new Promise(function (resolve, reject) {
-       if ((typeof device === 'undefined' ? 'undefined' : babelHelpers_typeof(device)) === 'object') {
+       if ((typeof device === 'undefined' ? 'undefined' : babelHelpers.typeof(device)) === 'object') {
          document.addEventListener('deviceready', function () {
            if (checkStatusBar()) {
              resolve();
@@ -18731,10 +18735,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    var ModifierUtil = (function () {
      function ModifierUtil() {
-       babelHelpers_classCallCheck(this, ModifierUtil);
+       babelHelpers.classCallCheck(this, ModifierUtil);
      }
 
-     babelHelpers_createClass(ModifierUtil, null, [{
+     babelHelpers.createClass(ModifierUtil, null, [{
        key: 'diff',
 
        /**
@@ -18859,10 +18863,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    var LazyRepeatDelegate = (function () {
      function LazyRepeatDelegate() {
-       babelHelpers_classCallCheck(this, LazyRepeatDelegate);
+       babelHelpers.classCallCheck(this, LazyRepeatDelegate);
      }
 
-     babelHelpers_createClass(LazyRepeatDelegate, [{
+     babelHelpers.createClass(LazyRepeatDelegate, [{
        key: 'prepareItem',
 
        /**
@@ -18940,7 +18944,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       */
 
      function LazyRepeatProvider(wrapperElement, delegate) {
-       babelHelpers_classCallCheck(this, LazyRepeatProvider);
+       babelHelpers.classCallCheck(this, LazyRepeatProvider);
 
        if (!(delegate instanceof LazyRepeatDelegate)) {
          throw new Error('"delegate" parameter must be an instance of ons._internal.LazyRepeatDelegate.');
@@ -18972,7 +18976,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        this._onChange();
      }
 
-     babelHelpers_createClass(LazyRepeatProvider, [{
+     babelHelpers.createClass(LazyRepeatProvider, [{
        key: '_countItems',
        value: function _countItems() {
          return this._delegate.countItems();
@@ -21480,7 +21484,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
      var titleElementHTML = typeof title === 'string' ? '<div class="alert-dialog-title"></div>' : '';
 
-     var dialogElement = util.createElement('\n  <ons-alert-dialog>\n    <div class="alert-dialog-container">\n      ' + titleElementHTML + '\n      <div class="alert-dialog-content"></div>\n      <div class="alert-dialog-footer"></div>\n    </div>\n  </ons-alert-dialog>');
+     var dialogElement = util.createElement('\n  <ons-alert-dialog>\n    ' + titleElementHTML + '\n    <div class="alert-dialog-content"></div>\n    <div class="alert-dialog-footer"></div>\n  </ons-alert-dialog>');
 
      var titleElement = dialogElement.querySelector('.alert-dialog-title');
      var messageElement = dialogElement.querySelector('.alert-dialog-content');
@@ -21766,7 +21770,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        var delay = _ref$delay === undefined ? 0 : _ref$delay;
        var _ref$duration = _ref.duration;
        var duration = _ref$duration === undefined ? 0.2 : _ref$duration;
-       babelHelpers_classCallCheck(this, AlertDialogAnimator);
+       babelHelpers.classCallCheck(this, AlertDialogAnimator);
 
        this.timing = timing;
        this.delay = delay;
@@ -21778,7 +21782,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} done
       */
 
-     babelHelpers_createClass(AlertDialogAnimator, [{
+     babelHelpers.createClass(AlertDialogAnimator, [{
        key: 'show',
        value: function show(dialog, done) {
          done();
@@ -21802,7 +21806,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     * Android style animator for alert dialog.
     */
    var AndroidAlertDialogAnimator = (function (_AlertDialogAnimator) {
-     babelHelpers_inherits(AndroidAlertDialogAnimator, _AlertDialogAnimator);
+     babelHelpers.inherits(AndroidAlertDialogAnimator, _AlertDialogAnimator);
 
      function AndroidAlertDialogAnimator() {
        var _ref2 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
@@ -21813,8 +21817,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        var duration = _ref2$duration === undefined ? 0.2 : _ref2$duration;
        var _ref2$delay = _ref2.delay;
        var delay = _ref2$delay === undefined ? 0 : _ref2$delay;
-       babelHelpers_classCallCheck(this, AndroidAlertDialogAnimator);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(AndroidAlertDialogAnimator).call(this, { duration: duration, timing: timing, delay: delay }));
+       babelHelpers.classCallCheck(this, AndroidAlertDialogAnimator);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(AndroidAlertDialogAnimator).call(this, { duration: duration, timing: timing, delay: delay }));
      }
 
      /**
@@ -21822,7 +21826,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(AndroidAlertDialogAnimator, [{
+     babelHelpers.createClass(AndroidAlertDialogAnimator, [{
        key: 'show',
        value: function show(dialog, callback) {
          callback = callback ? callback : function () {};
@@ -21896,7 +21900,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     * iOS style animator for alert dialog.
     */
    var IOSAlertDialogAnimator = (function (_AlertDialogAnimator2) {
-     babelHelpers_inherits(IOSAlertDialogAnimator, _AlertDialogAnimator2);
+     babelHelpers.inherits(IOSAlertDialogAnimator, _AlertDialogAnimator2);
 
      function IOSAlertDialogAnimator() {
        var _ref3 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
@@ -21907,8 +21911,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        var duration = _ref3$duration === undefined ? 0.2 : _ref3$duration;
        var _ref3$delay = _ref3.delay;
        var delay = _ref3$delay === undefined ? 0 : _ref3$delay;
-       babelHelpers_classCallCheck(this, IOSAlertDialogAnimator);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(IOSAlertDialogAnimator).call(this, { duration: duration, timing: timing, delay: delay }));
+       babelHelpers.classCallCheck(this, IOSAlertDialogAnimator);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(IOSAlertDialogAnimator).call(this, { duration: duration, timing: timing, delay: delay }));
      }
 
      /*
@@ -21916,7 +21920,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(IOSAlertDialogAnimator, [{
+     babelHelpers.createClass(IOSAlertDialogAnimator, [{
        key: 'show',
        value: function show(dialog, callback) {
          callback = callback ? callback : function () {};
@@ -21984,8 +21988,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      return IOSAlertDialogAnimator;
    })(AlertDialogAnimator);
 
-   var scheme$19 = {
-     '': 'alert-dialog--*',
+   var scheme$20 = {
+     '.alert-dialog': 'alert-dialog--*',
      '.alert-dialog-container': 'alert-dialog-container--*',
      '.alert-dialog-title': 'alert-dialog-title--*',
      '.alert-dialog-content': 'alert-dialog-content--*',
@@ -21993,8 +21997,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      '.alert-dialog-button': 'alert-dialog-button--*',
      '.alert-dialog-footer--one': 'alert-dialog-footer--one--*',
      '.alert-dialog-button--one': 'alert-dialog-button--one--*',
-     '.alert-dialog-button--primal': 'alert-dialog-button--primal--*'
+     '.alert-dialog-button--primal': 'alert-dialog-button--primal--*',
+     '.alert-dialog-mask': 'alert-dialog-mask--*'
    };
+
+   var templateSource$2 = util.createElement('\n  <div>\n    <div class="alert-dialog-mask"></div>\n    <div class="alert-dialog">\n      <div class="alert-dialog-container"></div>\n    </div>\n  </div>\n');
 
    var _animatorDict = {
      'default': platform.isAndroid() ? AndroidAlertDialogAnimator : IOSAlertDialogAnimator,
@@ -22003,20 +22010,20 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var AlertDialogElement = (function (_BaseElement) {
-     babelHelpers_inherits(AlertDialogElement, _BaseElement);
+     babelHelpers.inherits(AlertDialogElement, _BaseElement);
 
      function AlertDialogElement() {
-       babelHelpers_classCallCheck(this, AlertDialogElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(AlertDialogElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, AlertDialogElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(AlertDialogElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(AlertDialogElement, [{
+     babelHelpers.createClass(AlertDialogElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._compile();
-         this._mask = this._createMask(this.getAttribute('mask-color'));
+         //this._mask = this._createMask(this.getAttribute('mask-color'));
 
-         ModifierUtil.initModifier(this, scheme$19);
+         ModifierUtil.initModifier(this, scheme$20);
 
          this._animatorFactory = new AnimatorFactory({
            animators: _animatorDict,
@@ -22032,9 +22039,31 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      }, {
        key: '_compile',
        value: function _compile() {
+         var style = this.getAttribute('style');
+
          this.style.display = 'none';
-         this.style.zIndex = '20001';
-         this.classList.add('alert-dialog');
+
+         var template = templateSource$2.cloneNode(true);
+         var alertDialog = template.children[1];
+
+         if (style) {
+           alertDialog.setAttribute('style', style);
+         }
+
+         while (this.firstChild) {
+           alertDialog.children[0].appendChild(this.firstChild);
+         }
+
+         while (template.firstChild) {
+           this.appendChild(template.firstChild);
+         }
+
+         this._dialog.style.zIndex = 20001;
+         this._mask.style.zIndex = 20000;
+
+         if (this.getAttribute('mask-color')) {
+           this._mask.style.backgroundColor = this.getAttribute('mask-color');
+         }
        }
 
        /**
@@ -22201,10 +22230,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          if (this.parentElement) {
            this.parentElement.removeChild(this);
          }
-
-         if (this._mask.parentElement) {
-           this._mask.parentElement.removeChild(this._mask);
-         }
        }
      }, {
        key: 'isCancelable',
@@ -22234,21 +22259,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          }
        }
      }, {
-       key: '_createMask',
-       value: function _createMask(color) {
-         this._mask = util.createElement('<div></div>');
-         this._mask.classList.add('alert-dialog-mask');
-         this._mask.style.zIndex = 20000;
-         this._mask.style.display = 'none';
-
-         if (color) {
-           this._mask.style.backgroundColor = color;
-         }
-
-         document.body.appendChild(this._mask);
-         return this._mask;
-       }
-     }, {
        key: 'attachedCallback',
        value: function attachedCallback() {
          this._deviceBackButtonHandler = deviceBackButtonDispatcher.createHandler(this, this._onDeviceBackButton.bind(this));
@@ -22267,23 +22277,47 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$19);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$20);
          }
        }
      }, {
-       key: '_titleElement',
+       key: '_mask',
+
+       /**
+        * @return {Element}
+        */
        get: function get() {
-         return util.findChild(this.children[0], '.alert-dialog-title');
+         return util.findChild(this, '.alert-dialog-mask');
        }
-     }, {
-       key: '_contentElement',
-       get: function get() {
-         return util.findChild(this.children[0], '.alert-dialog-content');
-       }
+
+       /**
+        * @return {Element}
+        */
+
      }, {
        key: '_dialog',
        get: function get() {
-         return this;
+         return util.findChild(this, '.alert-dialog');
+       }
+
+       /**
+        * @return {Element}
+        */
+
+     }, {
+       key: '_titleElement',
+       get: function get() {
+         return util.findChild(this._dialog.children[0], '.alert-dialog-title');
+       }
+
+       /**
+        * @return {Element}
+        */
+
+     }, {
+       key: '_contentElement',
+       get: function get() {
+         return util.findChild(this._dialog.children[0], '.alert-dialog-content');
        }
      }]);
      return AlertDialogElement;
@@ -22306,27 +22340,27 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    OnsAlertDialogElement.AlertDialogAnimator = AlertDialogAnimator;
 
-   var scheme$2 = {
+   var scheme = {
      '': 'back-button--*',
      '.back-button__icon': 'back-button--*__icon',
      '.back-button__label': 'back-button--*__label'
    };
 
    var BackButtonElement = (function (_BaseElement) {
-     babelHelpers_inherits(BackButtonElement, _BaseElement);
+     babelHelpers.inherits(BackButtonElement, _BaseElement);
 
      function BackButtonElement() {
-       babelHelpers_classCallCheck(this, BackButtonElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(BackButtonElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, BackButtonElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(BackButtonElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(BackButtonElement, [{
+     babelHelpers.createClass(BackButtonElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._options = {};
          this._compile();
          this._boundOnClick = this._onClick.bind(this);
-         ModifierUtil.initModifier(this, scheme$2);
+         ModifierUtil.initModifier(this, scheme);
        }
      }, {
        key: '_compile',
@@ -22382,7 +22416,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$2);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme);
          }
        }
      }, {
@@ -22421,24 +22455,24 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      prototype: BackButtonElement.prototype
    });
 
-   var scheme$3 = { '': 'bottom-bar--*' };
+   var scheme$1 = { '': 'bottom-bar--*' };
 
    var BottomToolbarElement = (function (_BaseElement) {
-     babelHelpers_inherits(BottomToolbarElement, _BaseElement);
+     babelHelpers.inherits(BottomToolbarElement, _BaseElement);
 
      function BottomToolbarElement() {
-       babelHelpers_classCallCheck(this, BottomToolbarElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(BottomToolbarElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, BottomToolbarElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(BottomToolbarElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(BottomToolbarElement, [{
+     babelHelpers.createClass(BottomToolbarElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.classList.add('bottom-bar');
          this.style.zIndex = '0';
          this._update();
 
-         ModifierUtil.initModifier(this, scheme$3);
+         ModifierUtil.initModifier(this, scheme$1);
        }
      }, {
        key: 'attributeChangedCallback',
@@ -22446,7 +22480,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          if (name === 'inline') {
            this._update();
          } else if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$3);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$1);
          }
        }
      }, {
@@ -22464,27 +22498,27 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      prototype: BottomToolbarElement.prototype
    });
 
-   var scheme$4 = { '': 'button--*' };
+   var scheme$2 = { '': 'button--*' };
 
    var ButtonElement = (function (_BaseElement) {
-     babelHelpers_inherits(ButtonElement, _BaseElement);
+     babelHelpers.inherits(ButtonElement, _BaseElement);
 
      function ButtonElement() {
-       babelHelpers_classCallCheck(this, ButtonElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ButtonElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ButtonElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ButtonElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ButtonElement, [{
+     babelHelpers.createClass(ButtonElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.classList.add('button');
-         ModifierUtil.initModifier(this, scheme$4);
+         ModifierUtil.initModifier(this, scheme$2);
        }
      }, {
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$4);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$2);
          }
        }
      }]);
@@ -22495,27 +22529,27 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      prototype: ButtonElement.prototype
    });
 
-   var scheme = { '': 'carousel-item--*' };
+   var scheme$3 = { '': 'carousel-item--*' };
 
    var CarouselItemElement = (function (_BaseElement) {
-     babelHelpers_inherits(CarouselItemElement, _BaseElement);
+     babelHelpers.inherits(CarouselItemElement, _BaseElement);
 
      function CarouselItemElement() {
-       babelHelpers_classCallCheck(this, CarouselItemElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(CarouselItemElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, CarouselItemElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(CarouselItemElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(CarouselItemElement, [{
+     babelHelpers.createClass(CarouselItemElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.style.width = '100%';
-         ModifierUtil.initModifier(this, scheme);
+         ModifierUtil.initModifier(this, scheme$3);
        }
      }, {
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$3);
          }
        }
      }]);
@@ -22526,7 +22560,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      prototype: CarouselItemElement.prototype
    });
 
-   var scheme$1 = { '': 'carousel--*' };
+   var scheme$4 = { '': 'carousel--*' };
 
    var VerticalModeTrait = {
 
@@ -22613,17 +22647,17 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var CarouselElement = (function (_BaseElement) {
-     babelHelpers_inherits(CarouselElement, _BaseElement);
+     babelHelpers.inherits(CarouselElement, _BaseElement);
 
      function CarouselElement() {
-       babelHelpers_classCallCheck(this, CarouselElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(CarouselElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, CarouselElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(CarouselElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(CarouselElement, [{
+     babelHelpers.createClass(CarouselElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
-         ModifierUtil.initModifier(this, scheme$1);
+         ModifierUtil.initModifier(this, scheme$4);
          this._doorLock = new DoorLock();
          this._scroll = 0;
          this._lastActiveIndex = 0;
@@ -23148,7 +23182,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
              };
            })();
 
-           if ((typeof _ret === 'undefined' ? 'undefined' : babelHelpers_typeof(_ret)) === "object") return _ret.v;
+           if ((typeof _ret === 'undefined' ? 'undefined' : babelHelpers.typeof(_ret)) === "object") return _ret.v;
          } else {
            return Math.max(0, Math.min(max, scroll));
          }
@@ -23344,7 +23378,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$1);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$4);
          } else if (name === 'direction') {
            this._onDirectionChange();
          }
@@ -23363,14 +23397,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    });
 
    var ColumnElement = (function (_BaseElement) {
-     babelHelpers_inherits(ColumnElement, _BaseElement);
+     babelHelpers.inherits(ColumnElement, _BaseElement);
 
      function ColumnElement() {
-       babelHelpers_classCallCheck(this, ColumnElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ColumnElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ColumnElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ColumnElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ColumnElement, [{
+     babelHelpers.createClass(ColumnElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          if (this.getAttribute('width')) {
@@ -23436,7 +23470,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        var delay = _ref$delay === undefined ? 0 : _ref$delay;
        var _ref$duration = _ref.duration;
        var duration = _ref$duration === undefined ? 0.2 : _ref$duration;
-       babelHelpers_classCallCheck(this, DialogAnimator);
+       babelHelpers.classCallCheck(this, DialogAnimator);
 
        this.timing = timing;
        this.delay = delay;
@@ -23448,7 +23482,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} done
       */
 
-     babelHelpers_createClass(DialogAnimator, [{
+     babelHelpers.createClass(DialogAnimator, [{
        key: 'show',
        value: function show(dialog, done) {
          done();
@@ -23472,7 +23506,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     * Android style animator for dialog.
     */
    var AndroidDialogAnimator = (function (_DialogAnimator) {
-     babelHelpers_inherits(AndroidDialogAnimator, _DialogAnimator);
+     babelHelpers.inherits(AndroidDialogAnimator, _DialogAnimator);
 
      function AndroidDialogAnimator() {
        var _ref2 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
@@ -23483,8 +23517,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        var delay = _ref2$delay === undefined ? 0 : _ref2$delay;
        var _ref2$duration = _ref2.duration;
        var duration = _ref2$duration === undefined ? 0.3 : _ref2$duration;
-       babelHelpers_classCallCheck(this, AndroidDialogAnimator);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(AndroidDialogAnimator).call(this, { timing: timing, delay: delay, duration: duration }));
+       babelHelpers.classCallCheck(this, AndroidDialogAnimator);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(AndroidDialogAnimator).call(this, { timing: timing, delay: delay, duration: duration }));
      }
 
      /**
@@ -23492,7 +23526,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(AndroidDialogAnimator, [{
+     babelHelpers.createClass(AndroidDialogAnimator, [{
        key: 'show',
        value: function show(dialog, callback) {
          callback = callback ? callback : function () {};
@@ -23566,7 +23600,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     * iOS style animator for dialog.
     */
    var IOSDialogAnimator = (function (_DialogAnimator2) {
-     babelHelpers_inherits(IOSDialogAnimator, _DialogAnimator2);
+     babelHelpers.inherits(IOSDialogAnimator, _DialogAnimator2);
 
      function IOSDialogAnimator() {
        var _ref3 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
@@ -23577,8 +23611,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        var delay = _ref3$delay === undefined ? 0 : _ref3$delay;
        var _ref3$duration = _ref3.duration;
        var duration = _ref3$duration === undefined ? 0.3 : _ref3$duration;
-       babelHelpers_classCallCheck(this, IOSDialogAnimator);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(IOSDialogAnimator).call(this, { timing: timing, delay: delay, duration: duration }));
+       babelHelpers.classCallCheck(this, IOSDialogAnimator);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(IOSDialogAnimator).call(this, { timing: timing, delay: delay, duration: duration }));
      }
 
      /**
@@ -23586,7 +23620,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(IOSDialogAnimator, [{
+     babelHelpers.createClass(IOSDialogAnimator, [{
        key: 'show',
        value: function show(dialog, callback) {
          callback = callback ? callback : function () {};
@@ -23656,7 +23690,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     * Slide animator for dialog.
     */
    var SlideDialogAnimator = (function (_DialogAnimator3) {
-     babelHelpers_inherits(SlideDialogAnimator, _DialogAnimator3);
+     babelHelpers.inherits(SlideDialogAnimator, _DialogAnimator3);
 
      function SlideDialogAnimator() {
        var _ref4 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
@@ -23667,8 +23701,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        var delay = _ref4$delay === undefined ? 0 : _ref4$delay;
        var _ref4$duration = _ref4.duration;
        var duration = _ref4$duration === undefined ? 0.2 : _ref4$duration;
-       babelHelpers_classCallCheck(this, SlideDialogAnimator);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SlideDialogAnimator).call(this, { timing: timing, delay: delay, duration: duration }));
+       babelHelpers.classCallCheck(this, SlideDialogAnimator);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SlideDialogAnimator).call(this, { timing: timing, delay: delay, duration: duration }));
      }
 
      /**
@@ -23676,7 +23710,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(SlideDialogAnimator, [{
+     babelHelpers.createClass(SlideDialogAnimator, [{
        key: 'show',
        value: function show(dialog, callback) {
          callback = callback ? callback : function () {};
@@ -23744,12 +23778,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    var scheme$21 = {
      '.dialog': 'dialog--*',
-     '.dialog-container': 'dialog-container--*'
+     '.dialog-container': 'dialog-container--*',
+     '.dialog-mask': 'dialog-mask--*'
    };
 
-   var templateSource$2 = util.createElement('\n  <div>\n    <div class="dialog-mask"></div>\n    <div class="dialog">\n      <div class="dialog-container"></div>\n    </div>\n  </div>\n');
+   var templateSource$3 = util.createElement('\n  <div>\n    <div class="dialog-mask"></div>\n    <div class="dialog">\n      <div class="dialog-container"></div>\n    </div>\n  </div>\n');
 
-   var _animatorDict$2 = {
+   var _animatorDict$1 = {
      'default': platform.isAndroid() ? AndroidDialogAnimator : IOSDialogAnimator,
      'fade': platform.isAndroid() ? AndroidDialogAnimator : IOSDialogAnimator,
      'slide': SlideDialogAnimator,
@@ -23757,14 +23792,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var DialogElement = (function (_BaseElement) {
-     babelHelpers_inherits(DialogElement, _BaseElement);
+     babelHelpers.inherits(DialogElement, _BaseElement);
 
      function DialogElement() {
-       babelHelpers_classCallCheck(this, DialogElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(DialogElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, DialogElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(DialogElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(DialogElement, [{
+     babelHelpers.createClass(DialogElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._compile();
@@ -23775,7 +23810,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          this._boundCancel = this._cancel.bind(this);
 
          this._animatorFactory = new AnimatorFactory({
-           animators: _animatorDict$2,
+           animators: _animatorDict$1,
            baseClass: DialogAnimator,
            baseClassName: 'DialogAnimator',
            defaultAnimation: this.getAttribute('animation')
@@ -23784,11 +23819,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      }, {
        key: '_compile',
        value: function _compile() {
+         if (util.findChild(this, '.dialog') && util.findChild(this, '.dialog-mask')) {
+           return;
+         }
+
          var style = this.getAttribute('style');
 
          this.style.display = 'none';
 
-         var template = templateSource$2.cloneNode(true);
+         var template = templateSource$3.cloneNode(true);
          var dialog = template.children[1];
 
          if (style) {
@@ -24078,7 +24117,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      if (!(Animator.prototype instanceof DialogAnimator)) {
        throw new Error('"Animator" param must inherit OnsDialogElement.DialogAnimator');
      }
-     _animatorDict$2[name] = Animator;
+     _animatorDict$1[name] = Animator;
    };
 
    OnsDialogElement.DialogAnimator = DialogAnimator;
@@ -24088,21 +24127,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var FabElement = (function (_BaseElement) {
-     babelHelpers_inherits(FabElement, _BaseElement);
+     babelHelpers.inherits(FabElement, _BaseElement);
 
      function FabElement() {
-       babelHelpers_classCallCheck(this, FabElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(FabElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, FabElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(FabElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(FabElement, [{
+     babelHelpers.createClass(FabElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._compile();
          ModifierUtil.initModifier(this, scheme$5);
          this.classList.add('fab');
          this._updatePosition();
-         this.show();
+         this.hide();
        }
      }, {
        key: '_compile',
@@ -24264,14 +24303,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    });
 
    var GestureDetectorElement = (function (_BaseElement) {
-     babelHelpers_inherits(GestureDetectorElement, _BaseElement);
+     babelHelpers.inherits(GestureDetectorElement, _BaseElement);
 
      function GestureDetectorElement() {
-       babelHelpers_classCallCheck(this, GestureDetectorElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(GestureDetectorElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, GestureDetectorElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(GestureDetectorElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(GestureDetectorElement, [{
+     babelHelpers.createClass(GestureDetectorElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._gestureDetector = new GestureDetector(this);
@@ -24285,14 +24324,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    });
 
    var IconElement = (function (_BaseElement) {
-     babelHelpers_inherits(IconElement, _BaseElement);
+     babelHelpers.inherits(IconElement, _BaseElement);
 
      function IconElement() {
-       babelHelpers_classCallCheck(this, IconElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(IconElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, IconElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(IconElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(IconElement, [{
+     babelHelpers.createClass(IconElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._update();
@@ -24391,7 +24430,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    });
 
    var InternalDelegate = (function (_LazyRepeatDelegate) {
-     babelHelpers_inherits(InternalDelegate, _LazyRepeatDelegate);
+     babelHelpers.inherits(InternalDelegate, _LazyRepeatDelegate);
 
      /**
       * @param {Object} userDelegate
@@ -24400,9 +24439,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
      function InternalDelegate(userDelegate) {
        var templateElement = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
-       babelHelpers_classCallCheck(this, InternalDelegate);
+       babelHelpers.classCallCheck(this, InternalDelegate);
 
-       var _this = babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(InternalDelegate).call(this));
+       var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(InternalDelegate).call(this));
 
        _this._userDelegate = userDelegate;
 
@@ -24414,7 +24453,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        return _this;
      }
 
-     babelHelpers_createClass(InternalDelegate, [{
+     babelHelpers.createClass(InternalDelegate, [{
        key: 'prepareItem',
        value: function prepareItem(index, done) {
          var content = this._userDelegate.createItemContent(index, this._templateElement);
@@ -24475,14 +24514,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })(LazyRepeatDelegate);
 
    var LazyRepeatElement = (function (_BaseElement) {
-     babelHelpers_inherits(LazyRepeatElement, _BaseElement);
+     babelHelpers.inherits(LazyRepeatElement, _BaseElement);
 
      function LazyRepeatElement() {
-       babelHelpers_classCallCheck(this, LazyRepeatElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(LazyRepeatElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, LazyRepeatElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(LazyRepeatElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(LazyRepeatElement, [{
+     babelHelpers.createClass(LazyRepeatElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.style.display = 'none';
@@ -24564,14 +24603,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var scheme$6 = { '': 'list__header--*' };
 
    var ListHeaderElement = (function (_BaseElement) {
-     babelHelpers_inherits(ListHeaderElement, _BaseElement);
+     babelHelpers.inherits(ListHeaderElement, _BaseElement);
 
      function ListHeaderElement() {
-       babelHelpers_classCallCheck(this, ListHeaderElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ListHeaderElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ListHeaderElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ListHeaderElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ListHeaderElement, [{
+     babelHelpers.createClass(ListHeaderElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.classList.add('list__header');
@@ -24605,14 +24644,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var ListItemElement = (function (_BaseElement) {
-     babelHelpers_inherits(ListItemElement, _BaseElement);
+     babelHelpers.inherits(ListItemElement, _BaseElement);
 
      function ListItemElement() {
-       babelHelpers_classCallCheck(this, ListItemElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ListItemElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ListItemElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ListItemElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ListItemElement, [{
+     babelHelpers.createClass(ListItemElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.classList.add('list__item');
@@ -24727,14 +24766,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var scheme$8 = { '': 'list--*' };
 
    var ListElement = (function (_BaseElement) {
-     babelHelpers_inherits(ListElement, _BaseElement);
+     babelHelpers.inherits(ListElement, _BaseElement);
 
      function ListElement() {
-       babelHelpers_classCallCheck(this, ListElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ListElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ListElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ListElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ListElement, [{
+     babelHelpers.createClass(ListElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.classList.add('list');
@@ -24756,21 +24795,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    });
 
    var scheme$9 = {
-     '.text-input--material': 'text-input--material--*',
-     '.text-input--material__label': 'text-input--material__label--*'
+     '.text-input': 'text-input--*',
+     '.text-input__label': 'text-input--*__label'
    };
 
    var INPUT_ATTRIBUTES = ['autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'disabled', 'inputmode', 'max', 'maxlength', 'min', 'minlength', 'name', 'pattern', 'placeholder', 'readonly', 'size', 'step', 'type', 'validator', 'value'];
 
    var MaterialInputElement = (function (_BaseElement) {
-     babelHelpers_inherits(MaterialInputElement, _BaseElement);
+     babelHelpers.inherits(MaterialInputElement, _BaseElement);
 
      function MaterialInputElement() {
-       babelHelpers_classCallCheck(this, MaterialInputElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(MaterialInputElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, MaterialInputElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(MaterialInputElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(MaterialInputElement, [{
+     babelHelpers.createClass(MaterialInputElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._compile();
@@ -24793,9 +24832,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          }
 
          this.appendChild(document.createElement('input'));
-         this._input.classList.add('text-input--material');
+         this._input.classList.add('text-input');
          this.appendChild(document.createElement('span'));
-         this._label.classList.add('text-input--material__label');
+         this._label.classList.add('text-input__label');
        }
      }, {
        key: 'attributeChangedCallback',
@@ -24866,9 +24905,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        key: '_updateLabelClass',
        value: function _updateLabelClass() {
          if (this.value === '') {
-           this._label.classList.remove('text-input--material__label--active');
+           this._label.classList.remove('text-input__label--active');
          } else {
-           this._label.classList.add('text-input--material__label--active');
+           this._label.classList.add('text-input__label--active');
          }
        }
      }, {
@@ -24923,7 +24962,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      return MaterialInputElement;
    })(BaseElement);
 
-   window.OnsMaterialInputElement = document.registerElement('ons-material-input', {
+   window.OnsInputElement = document.registerElement('ons-input', {
      prototype: MaterialInputElement.prototype
    });
 
@@ -24955,7 +24994,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
      function ModalAnimator() {
        var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-       babelHelpers_classCallCheck(this, ModalAnimator);
+       babelHelpers.classCallCheck(this, ModalAnimator);
 
        this.delay = 0;
        this.duration = 0.2;
@@ -24970,7 +25009,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(ModalAnimator, [{
+     babelHelpers.createClass(ModalAnimator, [{
        key: "show",
        value: function show(modal, callback) {
          callback();
@@ -24995,16 +25034,16 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     */
 
    var FadeModalAnimator = (function (_ModalAnimator) {
-     babelHelpers_inherits(FadeModalAnimator, _ModalAnimator);
+     babelHelpers.inherits(FadeModalAnimator, _ModalAnimator);
 
      function FadeModalAnimator(options) {
-       babelHelpers_classCallCheck(this, FadeModalAnimator);
+       babelHelpers.classCallCheck(this, FadeModalAnimator);
 
        options.timing = options.timing || 'linear';
        options.duration = options.duration || '0.3';
        options.delay = options.delay || 0;
 
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(FadeModalAnimator).call(this, options));
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(FadeModalAnimator).call(this, options));
      }
 
      /**
@@ -25012,7 +25051,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(FadeModalAnimator, [{
+     babelHelpers.createClass(FadeModalAnimator, [{
        key: 'show',
        value: function show(modal, callback) {
          callback = callback ? callback : function () {};
@@ -25056,38 +25095,38 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      return FadeModalAnimator;
    })(ModalAnimator);
 
-   var scheme$20 = {
+   var scheme$22 = {
      '': 'modal--*',
      'modal__content': 'modal--*__content'
    };
 
-   var _animatorDict$1 = {
+   var _animatorDict$2 = {
      'default': ModalAnimator,
      'fade': FadeModalAnimator,
      'none': ModalAnimator
    };
 
    var ModalElement = (function (_BaseElement) {
-     babelHelpers_inherits(ModalElement, _BaseElement);
+     babelHelpers.inherits(ModalElement, _BaseElement);
 
      function ModalElement() {
-       babelHelpers_classCallCheck(this, ModalElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ModalElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ModalElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ModalElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ModalElement, [{
+     babelHelpers.createClass(ModalElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._doorLock = new DoorLock();
          this._animatorFactory = new AnimatorFactory({
-           animators: _animatorDict$1,
+           animators: _animatorDict$2,
            baseClass: ModalAnimator,
            baseClassName: 'ModalAnimator',
            defaultAnimation: this.getAttribute('animation')
          });
 
          this._compile();
-         ModifierUtil.initModifier(this, scheme$20);
+         ModifierUtil.initModifier(this, scheme$22);
        }
      }, {
        key: 'getDeviceBackButtonHandler',
@@ -25255,7 +25294,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$20);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$22);
          }
        }
      }]);
@@ -25274,7 +25313,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      if (!(Animator.prototype instanceof ModalAnimator)) {
        throw new Error('"Animator" param must inherit OnsModalElement.ModalAnimator');
      }
-     _animatorDict$1[name] = Animator;
+     _animatorDict$2[name] = Animator;
    };
 
    window.OnsModalElement.ModalAnimator = ModalAnimator;
@@ -25289,7 +25328,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       */
 
      function NavigatorTransitionAnimator(options) {
-       babelHelpers_classCallCheck(this, NavigatorTransitionAnimator);
+       babelHelpers.classCallCheck(this, NavigatorTransitionAnimator);
 
        options = util.extend({
          timing: 'linear',
@@ -25302,7 +25341,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        this.delay = options.delay;
      }
 
-     babelHelpers_createClass(NavigatorTransitionAnimator, [{
+     babelHelpers.createClass(NavigatorTransitionAnimator, [{
        key: 'push',
        value: function push(enterPage, leavePage, callback) {
          callback();
@@ -25317,14 +25356,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })();
 
    var NoneNavigatorTransitionAnimator = (function (_NavigatorTransitionA) {
-     babelHelpers_inherits(NoneNavigatorTransitionAnimator, _NavigatorTransitionA);
+     babelHelpers.inherits(NoneNavigatorTransitionAnimator, _NavigatorTransitionA);
 
      function NoneNavigatorTransitionAnimator(options) {
-       babelHelpers_classCallCheck(this, NoneNavigatorTransitionAnimator);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(NoneNavigatorTransitionAnimator).call(this, options));
+       babelHelpers.classCallCheck(this, NoneNavigatorTransitionAnimator);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(NoneNavigatorTransitionAnimator).call(this, options));
      }
 
-     babelHelpers_createClass(NoneNavigatorTransitionAnimator, [{
+     babelHelpers.createClass(NoneNavigatorTransitionAnimator, [{
        key: 'push',
        value: function push(enterPage, leavePage, callback) {
          callback();
@@ -25343,10 +25382,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     */
 
    var FadeNavigatorTransitionAnimator = (function (_NavigatorTransitionA) {
-     babelHelpers_inherits(FadeNavigatorTransitionAnimator, _NavigatorTransitionA);
+     babelHelpers.inherits(FadeNavigatorTransitionAnimator, _NavigatorTransitionA);
 
      function FadeNavigatorTransitionAnimator(options) {
-       babelHelpers_classCallCheck(this, FadeNavigatorTransitionAnimator);
+       babelHelpers.classCallCheck(this, FadeNavigatorTransitionAnimator);
 
        options = util.extend({
          timing: 'linear',
@@ -25354,7 +25393,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          delay: '0'
        }, options || {});
 
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(FadeNavigatorTransitionAnimator).call(this, options));
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(FadeNavigatorTransitionAnimator).call(this, options));
      }
 
      /**
@@ -25363,7 +25402,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(FadeNavigatorTransitionAnimator, [{
+     babelHelpers.createClass(FadeNavigatorTransitionAnimator, [{
        key: 'push',
        value: function push(enterPage, leavePage, callback) {
 
@@ -25448,10 +25487,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     */
 
    var LiftNavigatorTransitionAnimator = (function (_NavigatorTransitionA) {
-     babelHelpers_inherits(LiftNavigatorTransitionAnimator, _NavigatorTransitionA);
+     babelHelpers.inherits(LiftNavigatorTransitionAnimator, _NavigatorTransitionA);
 
      function LiftNavigatorTransitionAnimator(options) {
-       babelHelpers_classCallCheck(this, LiftNavigatorTransitionAnimator);
+       babelHelpers.classCallCheck(this, LiftNavigatorTransitionAnimator);
 
        options = util.extend({
          duration: 0.4,
@@ -25459,7 +25498,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          delay: 0
        }, options || {});
 
-       var _this = babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(LiftNavigatorTransitionAnimator).call(this, options));
+       var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(LiftNavigatorTransitionAnimator).call(this, options));
 
        _this.backgroundMask = util.createElement('\n      <div style="position: absolute; width: 100%; height: 100%;\n        background-color: black;"></div>\n    ');
        return _this;
@@ -25471,7 +25510,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(LiftNavigatorTransitionAnimator, [{
+     babelHelpers.createClass(LiftNavigatorTransitionAnimator, [{
        key: 'push',
        value: function push(enterPage, leavePage, callback) {
          var _this2 = this;
@@ -25569,10 +25608,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     */
 
    var SimpleSlideNavigatorTransitionAnimator = (function (_NavigatorTransitionA) {
-     babelHelpers_inherits(SimpleSlideNavigatorTransitionAnimator, _NavigatorTransitionA);
+     babelHelpers.inherits(SimpleSlideNavigatorTransitionAnimator, _NavigatorTransitionA);
 
      function SimpleSlideNavigatorTransitionAnimator(options) {
-       babelHelpers_classCallCheck(this, SimpleSlideNavigatorTransitionAnimator);
+       babelHelpers.classCallCheck(this, SimpleSlideNavigatorTransitionAnimator);
 
        options = util.extend({
          duration: 0.3,
@@ -25580,7 +25619,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          delay: 0
        }, options || {});
 
-       var _this = babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SimpleSlideNavigatorTransitionAnimator).call(this, options));
+       var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SimpleSlideNavigatorTransitionAnimator).call(this, options));
 
        _this.backgroundMask = util.createElement('\n      <div style="position: absolute; width: 100%; height: 100%; z-index: 2;\n        background-color: black; opacity: 0;"></div>\n    ');
        _this.blackMaskOpacity = 0.4;
@@ -25593,7 +25632,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} callback
       */
 
-     babelHelpers_createClass(SimpleSlideNavigatorTransitionAnimator, [{
+     babelHelpers.createClass(SimpleSlideNavigatorTransitionAnimator, [{
        key: 'push',
        value: function push(enterPage, leavePage, callback) {
          var _this2 = this;
@@ -25703,10 +25742,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     */
 
    var IOSSlideNavigatorTransitionAnimator = (function (_NavigatorTransitionA) {
-     babelHelpers_inherits(IOSSlideNavigatorTransitionAnimator, _NavigatorTransitionA);
+     babelHelpers.inherits(IOSSlideNavigatorTransitionAnimator, _NavigatorTransitionA);
 
      function IOSSlideNavigatorTransitionAnimator(options) {
-       babelHelpers_classCallCheck(this, IOSSlideNavigatorTransitionAnimator);
+       babelHelpers.classCallCheck(this, IOSSlideNavigatorTransitionAnimator);
 
        options = util.extend({
          duration: 0.4,
@@ -25714,13 +25753,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          delay: 0
        }, options || {});
 
-       var _this = babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(IOSSlideNavigatorTransitionAnimator).call(this, options));
+       var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(IOSSlideNavigatorTransitionAnimator).call(this, options));
 
        _this.backgroundMask = util.createElement('\n      <div style="position: absolute; width: 100%; height: 100%;\n        background-color: black; opacity: 0;"></div>\n    ');
        return _this;
      }
 
-     babelHelpers_createClass(IOSSlideNavigatorTransitionAnimator, [{
+     babelHelpers.createClass(IOSSlideNavigatorTransitionAnimator, [{
        key: '_decompose',
        value: function _decompose(page) {
          CustomElements.upgrade(page.element);
@@ -26117,7 +26156,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      function NavigatorPage(params) {
        var _this = this;
 
-       babelHelpers_classCallCheck(this, NavigatorPage);
+       babelHelpers.classCallCheck(this, NavigatorPage);
 
        this.page = params.page;
        this.name = params.page;
@@ -26144,7 +26183,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        }, false);
      }
 
-     babelHelpers_createClass(NavigatorPage, [{
+     babelHelpers.createClass(NavigatorPage, [{
        key: 'getDeviceBackButtonHandler',
        value: function getDeviceBackButtonHandler() {
          return this._deviceBackButtonHandler;
@@ -26234,14 +26273,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var NavigatorElement = (function (_BaseElement) {
-     babelHelpers_inherits(NavigatorElement, _BaseElement);
+     babelHelpers.inherits(NavigatorElement, _BaseElement);
 
      function NavigatorElement() {
-       babelHelpers_classCallCheck(this, NavigatorElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(NavigatorElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, NavigatorElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(NavigatorElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(NavigatorElement, [{
+     babelHelpers.createClass(NavigatorElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._doorLock = new DoorLock();
@@ -26425,7 +26464,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
          options = options || {};
 
-         if (options && (typeof options === 'undefined' ? 'undefined' : babelHelpers_typeof(options)) != 'object') {
+         if (options && (typeof options === 'undefined' ? 'undefined' : babelHelpers.typeof(options)) != 'object') {
            throw new Error('options must be an object. You supplied ' + options);
          }
 
@@ -26611,7 +26650,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
            return;
          }
 
-         if (options && (typeof options === 'undefined' ? 'undefined' : babelHelpers_typeof(options)) != 'object') {
+         if (options && (typeof options === 'undefined' ? 'undefined' : babelHelpers.typeof(options)) != 'object') {
            throw new Error('options must be an object. You supplied ' + options);
          }
 
@@ -26619,6 +26658,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
            return;
          }
 
+         this._isPushing = true;
          this._doorLock.waitUnlock(function () {
            return _this8._pushPage(page, options);
          });
@@ -26727,7 +26767,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
          var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
-         if (options && (typeof options === 'undefined' ? 'undefined' : babelHelpers_typeof(options)) != 'object') {
+         if (options && (typeof options === 'undefined' ? 'undefined' : babelHelpers.typeof(options)) != 'object') {
            throw new Error('options must be an object. You supplied ' + options);
          }
 
@@ -26911,14 +26951,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var nullToolbarElement = document.createElement('ons-toolbar');
 
    var PageElement = (function (_BaseElement) {
-     babelHelpers_inherits(PageElement, _BaseElement);
+     babelHelpers.inherits(PageElement, _BaseElement);
 
      function PageElement() {
-       babelHelpers_classCallCheck(this, PageElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(PageElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, PageElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(PageElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(PageElement, [{
+     babelHelpers.createClass(PageElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.classList.add('page');
@@ -27277,7 +27317,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       */
 
      function PopoverAnimator(options) {
-       babelHelpers_classCallCheck(this, PopoverAnimator);
+       babelHelpers.classCallCheck(this, PopoverAnimator);
 
        options = ons._util.extend({
          timing: 'cubic-bezier(.1, .7, .4, 1)',
@@ -27290,7 +27330,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        this.delay = options.delay;
      }
 
-     babelHelpers_createClass(PopoverAnimator, [{
+     babelHelpers.createClass(PopoverAnimator, [{
        key: 'show',
        value: function show(popover, callback) {
          callback();
@@ -27305,11 +27345,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })();
 
    var FadePopoverAnimator = (function (_PopoverAnimator) {
-     babelHelpers_inherits(FadePopoverAnimator, _PopoverAnimator);
+     babelHelpers.inherits(FadePopoverAnimator, _PopoverAnimator);
 
      function FadePopoverAnimator(options) {
-       babelHelpers_classCallCheck(this, FadePopoverAnimator);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(FadePopoverAnimator).call(this, options));
+       babelHelpers.classCallCheck(this, FadePopoverAnimator);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(FadePopoverAnimator).call(this, options));
      }
 
      /**
@@ -27317,7 +27357,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      * @param {Function} callback
      */
 
-     babelHelpers_createClass(FadePopoverAnimator, [{
+     babelHelpers.createClass(FadePopoverAnimator, [{
        key: 'show',
        value: function show(popover, callback) {
          var pop = popover.querySelector('.popover');
@@ -27379,12 +27419,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      return FadePopoverAnimator;
    })(PopoverAnimator);
 
-   var scheme$22 = {
+   var scheme$23 = {
      '.popover': 'popover--*',
      '.popover__content': 'popover__content--*'
    };
 
-   var templateSource$3 = util.createElement('\n  <div>\n    <div class="popover-mask"></div>\n    <div class="popover">\n      <div class="popover__content"></div>\n      <div class="popover__arrow"></div>\n    </div>\n  </div>\n');
+   var templateSource$4 = util.createElement('\n  <div>\n    <div class="popover-mask"></div>\n    <div class="popover">\n      <div class="popover__content"></div>\n      <div class="popover__arrow"></div>\n    </div>\n  </div>\n');
 
    var _animatorDict$4 = {
      'fade': FadePopoverAnimator,
@@ -27392,19 +27432,19 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var PopoverElement = (function (_BaseElement) {
-     babelHelpers_inherits(PopoverElement, _BaseElement);
+     babelHelpers.inherits(PopoverElement, _BaseElement);
 
      function PopoverElement() {
-       babelHelpers_classCallCheck(this, PopoverElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(PopoverElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, PopoverElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(PopoverElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(PopoverElement, [{
+     babelHelpers.createClass(PopoverElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._compile();
          this.style.display = 'none';
-         ModifierUtil.initModifier(this, scheme$22);
+         ModifierUtil.initModifier(this, scheme$23);
 
          this._mask.style.zIndex = '20000';
          this._popover.style.zIndex = '20001';
@@ -27582,7 +27622,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      }, {
        key: '_compile',
        value: function _compile() {
-         var templateElement = templateSource$3.cloneNode(true);
+         var templateElement = templateSource$4.cloneNode(true);
          var content = templateElement.querySelector('.popover__content');
          var style = this.getAttribute('style');
 
@@ -27751,7 +27791,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$22);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$23);
          } else if (name === 'direction') {
            this._boundOnChange();
          } else if (name === 'animation' || name === 'animation-options') {
@@ -27859,14 +27899,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var template = util.createElement('\n  <div class="progress-bar">\n    <div class="progress-bar__secondary"></div>\n    <div class="progress-bar__primary"></div>\n  </div>\n');
 
    var ProgressBarElement = (function (_BaseElement) {
-     babelHelpers_inherits(ProgressBarElement, _BaseElement);
+     babelHelpers.inherits(ProgressBarElement, _BaseElement);
 
      function ProgressBarElement() {
-       babelHelpers_classCallCheck(this, ProgressBarElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ProgressBarElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ProgressBarElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ProgressBarElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ProgressBarElement, [{
+     babelHelpers.createClass(ProgressBarElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._compile();
@@ -27931,14 +27971,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var template$1 = util.createElement('\n  <svg class="progress-circular">\n    <circle class="progress-circular__secondary" cx="50%" cy="50%" r="40%" fill="none" stroke-width="10%" stroke-miterlimit="10"/>\n    <circle class="progress-circular__primary" cx="50%" cy="50%" r="40%" fill="none" stroke-width="10%" stroke-miterlimit="10"/>\n  </svg>\n');
 
    var ProgressCircularElement = (function (_BaseElement) {
-     babelHelpers_inherits(ProgressCircularElement, _BaseElement);
+     babelHelpers.inherits(ProgressCircularElement, _BaseElement);
 
      function ProgressCircularElement() {
-       babelHelpers_classCallCheck(this, ProgressCircularElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ProgressCircularElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ProgressCircularElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ProgressCircularElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ProgressCircularElement, [{
+     babelHelpers.createClass(ProgressCircularElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._compile();
@@ -28005,14 +28045,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var STATE_ACTION = 'action';
 
    var PullHookElement = (function (_BaseElement) {
-     babelHelpers_inherits(PullHookElement, _BaseElement);
+     babelHelpers.inherits(PullHookElement, _BaseElement);
 
      function PullHookElement() {
-       babelHelpers_classCallCheck(this, PullHookElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(PullHookElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, PullHookElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(PullHookElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(PullHookElement, [{
+     babelHelpers.createClass(PullHookElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._scrollElement = this._createScrollElement();
@@ -28395,14 +28435,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    window.OnsPullHookElement.STATE_PREACTION = STATE_PREACTION;
 
    var RippleElement = (function (_BaseElement) {
-     babelHelpers_inherits(RippleElement, _BaseElement);
+     babelHelpers.inherits(RippleElement, _BaseElement);
 
      function RippleElement() {
-       babelHelpers_classCallCheck(this, RippleElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(RippleElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, RippleElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(RippleElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(RippleElement, [{
+     babelHelpers.createClass(RippleElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.classList.add('ripple');
@@ -28673,22 +28713,22 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    window.OnsScrollerElement = window.OnsScrollerElement ? window.OnsScrollerElement : document.registerElement('ons-scroller');
 
-   var scheme$14 = {
+   var scheme$13 = {
      '': 'speed-dial__item--*'
    };
 
    var SpeedDialItemElement = (function (_BaseElement) {
-     babelHelpers_inherits(SpeedDialItemElement, _BaseElement);
+     babelHelpers.inherits(SpeedDialItemElement, _BaseElement);
 
      function SpeedDialItemElement() {
-       babelHelpers_classCallCheck(this, SpeedDialItemElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SpeedDialItemElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, SpeedDialItemElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SpeedDialItemElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(SpeedDialItemElement, [{
+     babelHelpers.createClass(SpeedDialItemElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
-         ModifierUtil.initModifier(this, scheme$14);
+         ModifierUtil.initModifier(this, scheme$13);
          this.classList.add('fab');
          this.classList.add('fab--mini');
          this.classList.add('speed-dial__item');
@@ -28698,7 +28738,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$14);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$13);
          }
        }
      }, {
@@ -28724,25 +28764,25 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      prototype: SpeedDialItemElement.prototype
    });
 
-   var scheme$13 = {
+   var scheme$14 = {
      '': 'speed-dial--*'
    };
 
    var SpeedDialElement = (function (_BaseElement) {
-     babelHelpers_inherits(SpeedDialElement, _BaseElement);
+     babelHelpers.inherits(SpeedDialElement, _BaseElement);
 
      function SpeedDialElement() {
-       babelHelpers_classCallCheck(this, SpeedDialElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SpeedDialElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, SpeedDialElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SpeedDialElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(SpeedDialElement, [{
+     babelHelpers.createClass(SpeedDialElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._compile();
          this._shown = true;
          this._itemShown = false;
-         ModifierUtil.initModifier(this, scheme$13);
+         ModifierUtil.initModifier(this, scheme$14);
          this._boundOnClick = this._onClick.bind(this);
          this.classList.add('speed__dial');
 
@@ -28772,7 +28812,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$13);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$14);
          } else if (name === 'direction') {
            this._updateDirection(current);
          } else if (name === 'position') {
@@ -29061,14 +29101,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var SplitterContentElement = (function (_BaseElement) {
-     babelHelpers_inherits(SplitterContentElement, _BaseElement);
+     babelHelpers.inherits(SplitterContentElement, _BaseElement);
 
      function SplitterContentElement() {
-       babelHelpers_classCallCheck(this, SplitterContentElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SplitterContentElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, SplitterContentElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SplitterContentElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(SplitterContentElement, [{
+     babelHelpers.createClass(SplitterContentElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._page = null;
@@ -29180,14 +29220,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    window.OnsSplitterContentElement.rewritables = rewritables;
 
    var SplitterMaskElement = (function (_BaseElement) {
-     babelHelpers_inherits(SplitterMaskElement, _BaseElement);
+     babelHelpers.inherits(SplitterMaskElement, _BaseElement);
 
      function SplitterMaskElement() {
-       babelHelpers_classCallCheck(this, SplitterMaskElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SplitterMaskElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, SplitterMaskElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SplitterMaskElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(SplitterMaskElement, [{
+     babelHelpers.createClass(SplitterMaskElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._boundOnClick = this._onClick.bind(this);
@@ -29226,7 +29266,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var SplitterAnimator = (function () {
      function SplitterAnimator() {
        var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-       babelHelpers_classCallCheck(this, SplitterAnimator);
+       babelHelpers.classCallCheck(this, SplitterAnimator);
 
        options = util.extend({
          timing: 'linear',
@@ -29239,7 +29279,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        this._delay = options.delay;
      }
 
-     babelHelpers_createClass(SplitterAnimator, [{
+     babelHelpers.createClass(SplitterAnimator, [{
        key: 'layoutOnOpen',
        value: function layoutOnOpen() {}
      }, {
@@ -29278,10 +29318,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    var CollapseDetection = (function () {
      function CollapseDetection() {
-       babelHelpers_classCallCheck(this, CollapseDetection);
+       babelHelpers.classCallCheck(this, CollapseDetection);
      }
 
-     babelHelpers_createClass(CollapseDetection, [{
+     babelHelpers.createClass(CollapseDetection, [{
        key: 'activate',
        value: function activate(element) {}
      }, {
@@ -29313,16 +29353,16 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var OrientationCollapseDetection = (function (_CollapseDetection) {
-     babelHelpers_inherits(OrientationCollapseDetection, _CollapseDetection);
+     babelHelpers.inherits(OrientationCollapseDetection, _CollapseDetection);
 
      /**
       * @param {String} orientation
       */
 
      function OrientationCollapseDetection(orientation) {
-       babelHelpers_classCallCheck(this, OrientationCollapseDetection);
+       babelHelpers.classCallCheck(this, OrientationCollapseDetection);
 
-       var _this = babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(OrientationCollapseDetection).call(this));
+       var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(OrientationCollapseDetection).call(this));
 
        if (orientation !== 'portrait' && orientation !== 'landscape') {
          throw new Error('Invalid orientation: ' + orientation);
@@ -29333,7 +29373,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        return _this;
      }
 
-     babelHelpers_createClass(OrientationCollapseDetection, [{
+     babelHelpers.createClass(OrientationCollapseDetection, [{
        key: 'activate',
        value: function activate(element) {
          this._element = element;
@@ -29367,14 +29407,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })(CollapseDetection);
 
    var StaticCollapseDetection = (function (_CollapseDetection2) {
-     babelHelpers_inherits(StaticCollapseDetection, _CollapseDetection2);
+     babelHelpers.inherits(StaticCollapseDetection, _CollapseDetection2);
 
      function StaticCollapseDetection() {
-       babelHelpers_classCallCheck(this, StaticCollapseDetection);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(StaticCollapseDetection).apply(this, arguments));
+       babelHelpers.classCallCheck(this, StaticCollapseDetection);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(StaticCollapseDetection).apply(this, arguments));
      }
 
-     babelHelpers_createClass(StaticCollapseDetection, [{
+     babelHelpers.createClass(StaticCollapseDetection, [{
        key: 'activate',
        value: function activate(element) {
          element._updateMode(COLLAPSE_MODE);
@@ -29384,23 +29424,23 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })(CollapseDetection);
 
    var MediaQueryCollapseDetection = (function (_CollapseDetection3) {
-     babelHelpers_inherits(MediaQueryCollapseDetection, _CollapseDetection3);
+     babelHelpers.inherits(MediaQueryCollapseDetection, _CollapseDetection3);
 
      /**
       * @param {String} query
       */
 
      function MediaQueryCollapseDetection(query) {
-       babelHelpers_classCallCheck(this, MediaQueryCollapseDetection);
+       babelHelpers.classCallCheck(this, MediaQueryCollapseDetection);
 
-       var _this3 = babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(MediaQueryCollapseDetection).call(this));
+       var _this3 = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(MediaQueryCollapseDetection).call(this));
 
        _this3._mediaQueryString = query;
        _this3._boundOnChange = _this3._onChange.bind(_this3);
        return _this3;
      }
 
-     babelHelpers_createClass(MediaQueryCollapseDetection, [{
+     babelHelpers.createClass(MediaQueryCollapseDetection, [{
        key: '_onChange',
        value: function _onChange(queryList) {
          this._element._updateMode(queryList.matches ? COLLAPSE_MODE : SPLIT_MODE);
@@ -29426,12 +29466,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    var BaseMode = (function () {
      function BaseMode() {
-       babelHelpers_classCallCheck(this, BaseMode);
+       babelHelpers.classCallCheck(this, BaseMode);
      }
 
-     babelHelpers_createClass(BaseMode, [{
-       key: 'isOpened',
-       value: function isOpened() {
+     babelHelpers.createClass(BaseMode, [{
+       key: 'isOpen',
+       value: function isOpen() {
          return false;
        }
      }, {
@@ -29458,20 +29498,20 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })();
 
    var SplitMode = (function (_BaseMode) {
-     babelHelpers_inherits(SplitMode, _BaseMode);
+     babelHelpers.inherits(SplitMode, _BaseMode);
 
      function SplitMode(element) {
-       babelHelpers_classCallCheck(this, SplitMode);
+       babelHelpers.classCallCheck(this, SplitMode);
 
-       var _this4 = babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SplitMode).call(this));
+       var _this4 = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SplitMode).call(this));
 
        _this4._element = element;
        return _this4;
      }
 
-     babelHelpers_createClass(SplitMode, [{
-       key: 'isOpened',
-       value: function isOpened() {
+     babelHelpers.createClass(SplitMode, [{
+       key: 'isOpen',
+       value: function isOpen() {
          return false;
        }
 
@@ -29513,8 +29553,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })(BaseMode);
 
    var CollapseMode = (function (_BaseMode2) {
-     babelHelpers_inherits(CollapseMode, _BaseMode2);
-     babelHelpers_createClass(CollapseMode, [{
+     babelHelpers.inherits(CollapseMode, _BaseMode2);
+     babelHelpers.createClass(CollapseMode, [{
        key: '_animator',
        get: function get() {
          return this._element._getAnimator();
@@ -29525,9 +29565,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          return 'closed';
        }
      }, {
-       key: 'OPENED_STATE',
+       key: 'OPEN_STATE',
        get: function get() {
-         return 'opened';
+         return 'open';
        }
      }, {
        key: 'CHANGING_STATE',
@@ -29537,9 +29577,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      }]);
 
      function CollapseMode(element) {
-       babelHelpers_classCallCheck(this, CollapseMode);
+       babelHelpers.classCallCheck(this, CollapseMode);
 
-       var _this5 = babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(CollapseMode).call(this));
+       var _this5 = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(CollapseMode).call(this));
 
        _this5._state = CollapseMode.CLOSED_STATE;
        _this5._distance = 0;
@@ -29548,14 +29588,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        return _this5;
      }
 
-     babelHelpers_createClass(CollapseMode, [{
+     babelHelpers.createClass(CollapseMode, [{
        key: '_isLocked',
        value: function _isLocked() {
          return this._lock.isLocked();
        }
      }, {
-       key: 'isOpened',
-       value: function isOpened() {
+       key: 'isOpen',
+       value: function isOpen() {
          return this._state !== CollapseMode.CLOSED_STATE;
        }
      }, {
@@ -29570,7 +29610,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
            return;
          }
 
-         if (this._openedOtherSideMenu()) {
+         if (this._isOpenOtherSideMenu()) {
            return;
          }
 
@@ -29593,7 +29633,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        value: function _onDragStart(event) {
          this._ignoreDrag = false;
 
-         if (!this.isOpened() && this._openedOtherSideMenu()) {
+         if (!this.isOpen() && this._isOpenOtherSideMenu()) {
            this._ignoreDrag = true;
          } else if (this._element._swipeTargetWidth > 0) {
            var distance = this._element._isLeftSide() ? event.gesture.center.clientX : window.innerWidth - event.gesture.center.clientX;
@@ -29612,9 +29652,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
          var startEvent = event.gesture.startEvent;
 
-         if (!('isOpened' in startEvent)) {
-           startEvent.isOpened = this.isOpened();
-           startEvent.distance = startEvent.isOpened ? this._element._getWidthInPixel() : 0;
+         if (!('isOpen' in startEvent)) {
+           startEvent.isOpen = this.isOpen();
+           startEvent.distance = startEvent.isOpen ? this._element._getWidthInPixel() : 0;
            startEvent.width = this._element._getWidthInPixel();
          }
 
@@ -29628,7 +29668,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
            return;
          }
 
-         var distance = startEvent.isOpened ? deltaDistance + width : deltaDistance;
+         var distance = startEvent.isOpen ? deltaDistance + width : deltaDistance;
          var normalizedDistance = Math.max(0, Math.min(width, distance));
 
          startEvent.distance = normalizedDistance;
@@ -29642,7 +29682,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          var deltaX = event.gesture.deltaX;
          var deltaDistance = this._element._isLeftSide() ? deltaX : -deltaX;
          var width = event.gesture.startEvent.width;
-         var distance = event.gesture.startEvent.isOpened ? deltaDistance + width : deltaDistance;
+         var distance = event.gesture.startEvent.isOpen ? deltaDistance + width : deltaDistance;
          var direction = event.gesture.interimDirection;
          var shouldOpen = this._element._isLeftSide() && direction === 'right' && distance > width * this._element._getThresholdRatioIfShouldOpen() || !this._element._isLeftSide() && direction === 'left' && distance > width * this._element._getThresholdRatioIfShouldOpen();
 
@@ -29664,7 +29704,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
            if (this._animator.isActivated()) {
              this._animator.layoutOnClose();
            }
-         } else if (this._state === CollapseMode.OPENED_STATE) {
+         } else if (this._state === CollapseMode.OPEN_STATE) {
            if (this._animator.isActivated()) {
              this._animator.layoutOnOpen();
            }
@@ -29696,14 +29736,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         */
 
      }, {
-       key: '_openedOtherSideMenu',
-       value: function _openedOtherSideMenu() {
+       key: '_isOpenOtherSideMenu',
+       value: function _isOpenOtherSideMenu() {
          var _this6 = this;
 
          return util.arrayFrom(this._element.parentElement.children).filter(function (child) {
            return child.nodeName.toLowerCase() === 'ons-splitter-side' && _this6._element !== child;
          }).filter(function (side) {
-           return side.isOpened();
+           return side.isOpen();
          }).length > 0;
        }
 
@@ -29744,7 +29784,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
            return false;
          }
 
-         if (this._openedOtherSideMenu()) {
+         if (this._isOpenOtherSideMenu()) {
            return false;
          }
 
@@ -29762,13 +29802,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          };
 
          if (options.withoutAnimation) {
-           this._state = CollapseMode.OPENED_STATE;
+           this._state = CollapseMode.OPEN_STATE;
            this.layout();
            done();
          } else {
            this._state = CollapseMode.CHANGING_STATE;
            this._animator.open(function () {
-             _this7._state = CollapseMode.OPENED_STATE;
+             _this7._state = CollapseMode.OPEN_STATE;
              _this7.layout();
              done();
            });
@@ -29787,7 +29827,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        value: function closeMenu() {
          var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-         if (this._state !== CollapseMode.OPENED_STATE) {
+         if (this._state !== CollapseMode.OPEN_STATE) {
            return false;
          }
 
@@ -29842,14 +29882,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })(BaseMode);
 
    var SplitterSideElement = (function (_BaseElement) {
-     babelHelpers_inherits(SplitterSideElement, _BaseElement);
+     babelHelpers.inherits(SplitterSideElement, _BaseElement);
 
      function SplitterSideElement() {
-       babelHelpers_classCallCheck(this, SplitterSideElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SplitterSideElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, SplitterSideElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SplitterSideElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(SplitterSideElement, [{
+     babelHelpers.createClass(SplitterSideElement, [{
        key: '_updateForAnimationOptionsAttribute',
        value: function _updateForAnimationOptionsAttribute() {
          this._animationOptions = util.parseJSONObjectSafely(this.getAttribute('animation-options'), {});
@@ -30082,7 +30122,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
          var _width$match = width.match(/^(\d+)(px|%)$/);
 
-         var _width$match2 = babelHelpers_slicedToArray(_width$match, 3);
+         var _width$match2 = babelHelpers.slicedToArray(_width$match, 3);
 
          var num = _width$match2[1];
          var unit = _width$match2[2];
@@ -30145,9 +30185,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         */
 
      }, {
-       key: 'isOpened',
-       value: function isOpened() {
-         return this._getModeStrategy().isOpened();
+       key: 'isOpen',
+       value: function isOpen() {
+         return this._getModeStrategy().isOpen();
        }
 
        /**
@@ -30222,7 +30262,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        value: function toggle() {
          var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-         return this.isOpened() ? this.close(options) : this.open(options);
+         return this.isOpen() ? this.close(options) : this.open(options);
        }
      }, {
        key: 'attributeChangedCallback',
@@ -30370,11 +30410,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    window.OnsSplitterSideElement.rewritables = rewritables$1;
 
    var OverlaySplitterAnimator = (function (_SplitterAnimator) {
-     babelHelpers_inherits(OverlaySplitterAnimator, _SplitterAnimator);
+     babelHelpers.inherits(OverlaySplitterAnimator, _SplitterAnimator);
 
      function OverlaySplitterAnimator() {
        var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-       babelHelpers_classCallCheck(this, OverlaySplitterAnimator);
+       babelHelpers.classCallCheck(this, OverlaySplitterAnimator);
 
        options = util.extend({
          timing: 'cubic-bezier(.1, .7, .1, 1)',
@@ -30382,10 +30422,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          delay: '0'
        }, options || {});
 
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(OverlaySplitterAnimator).call(this, options));
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(OverlaySplitterAnimator).call(this, options));
      }
 
-     babelHelpers_createClass(OverlaySplitterAnimator, [{
+     babelHelpers.createClass(OverlaySplitterAnimator, [{
        key: 'isActivated',
        value: function isActivated() {
          return this._isActivated;
@@ -30538,14 +30578,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })(SplitterAnimator);
 
    var SplitterElement = (function (_BaseElement) {
-     babelHelpers_inherits(SplitterElement, _BaseElement);
+     babelHelpers.inherits(SplitterElement, _BaseElement);
 
      function SplitterElement() {
-       babelHelpers_classCallCheck(this, SplitterElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SplitterElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, SplitterElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SplitterElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(SplitterElement, [{
+     babelHelpers.createClass(SplitterElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._boundOnDeviceBackButton = this._onDeviceBackButton.bind(this);
@@ -30739,9 +30779,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         */
 
      }, {
-       key: 'leftIsOpened',
-       value: function leftIsOpened() {
-         return this._isOpened('left');
+       key: 'leftIsOpen',
+       value: function leftIsOpen() {
+         return this._isOpen('left');
        }
 
        /**
@@ -30749,9 +30789,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         */
 
      }, {
-       key: 'rightIsOpened',
-       value: function rightIsOpened() {
-         return this._isOpened('right');
+       key: 'rightIsOpen',
+       value: function rightIsOpen() {
+         return this._isOpen('right');
        }
 
        /**
@@ -30760,12 +30800,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         */
 
      }, {
-       key: '_isOpened',
-       value: function _isOpened(side) {
+       key: '_isOpen',
+       value: function _isOpen(side) {
          var menu = this._getSideElement(side);
 
          if (menu) {
-           return menu.isOpened();
+           return menu.isOpen();
          }
 
          return false;
@@ -30795,12 +30835,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          var left = this._getSideElement('left');
          var right = this._getSideElement('right');
 
-         if (left.isOpened()) {
+         if (left.isOpen()) {
            left.close();
            return;
          }
 
-         if (right.isOpened()) {
+         if (right.isOpen()) {
            right.close();
            return;
          }
@@ -30953,14 +30993,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })();
 
    var SwitchElement = (function (_ExtendableLabelEleme) {
-     babelHelpers_inherits(SwitchElement, _ExtendableLabelEleme);
+     babelHelpers.inherits(SwitchElement, _ExtendableLabelEleme);
 
      function SwitchElement() {
-       babelHelpers_classCallCheck(this, SwitchElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(SwitchElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, SwitchElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SwitchElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(SwitchElement, [{
+     babelHelpers.createClass(SwitchElement, [{
        key: 'isChecked',
 
        /**
@@ -31150,7 +31190,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
      function TabbarAnimator() {
        var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-       babelHelpers_classCallCheck(this, TabbarAnimator);
+       babelHelpers.classCallCheck(this, TabbarAnimator);
 
        this.timing = options.timing || 'linear';
        this.duration = options.duration !== undefined ? options.duration : '0.4';
@@ -31165,7 +31205,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {Function} done
       */
 
-     babelHelpers_createClass(TabbarAnimator, [{
+     babelHelpers.createClass(TabbarAnimator, [{
        key: 'apply',
        value: function apply(enterPage, leavePage, enterPageIndex, leavePageIndex, done) {
          throw new Error('This method must be implemented.');
@@ -31175,14 +31215,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })();
 
    var TabbarNoneAnimator = (function (_TabbarAnimator) {
-     babelHelpers_inherits(TabbarNoneAnimator, _TabbarAnimator);
+     babelHelpers.inherits(TabbarNoneAnimator, _TabbarAnimator);
 
      function TabbarNoneAnimator() {
-       babelHelpers_classCallCheck(this, TabbarNoneAnimator);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(TabbarNoneAnimator).apply(this, arguments));
+       babelHelpers.classCallCheck(this, TabbarNoneAnimator);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TabbarNoneAnimator).apply(this, arguments));
      }
 
-     babelHelpers_createClass(TabbarNoneAnimator, [{
+     babelHelpers.createClass(TabbarNoneAnimator, [{
        key: 'apply',
        value: function apply(enterPage, leavePage, enterIndex, leaveIndex, done) {
          done();
@@ -31192,19 +31232,19 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })(TabbarAnimator);
 
    var TabbarFadeAnimator = (function (_TabbarAnimator2) {
-     babelHelpers_inherits(TabbarFadeAnimator, _TabbarAnimator2);
+     babelHelpers.inherits(TabbarFadeAnimator, _TabbarAnimator2);
 
      function TabbarFadeAnimator(options) {
-       babelHelpers_classCallCheck(this, TabbarFadeAnimator);
+       babelHelpers.classCallCheck(this, TabbarFadeAnimator);
 
        options.timing = options.timing !== undefined ? options.timing : 'linear';
        options.duration = options.duration !== undefined ? options.duration : '0.4';
        options.delay = options.delay !== undefined ? options.delay : '0';
 
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(TabbarFadeAnimator).call(this, options));
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TabbarFadeAnimator).call(this, options));
      }
 
-     babelHelpers_createClass(TabbarFadeAnimator, [{
+     babelHelpers.createClass(TabbarFadeAnimator, [{
        key: 'apply',
        value: function apply(enterPage, leavePage, enterPageIndex, leavePageIndex, done) {
          animit.runAll(animit(enterPage).saveStyle().queue({
@@ -31235,16 +31275,16 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })(TabbarAnimator);
 
    var TabbarSlideAnimator = (function (_TabbarAnimator3) {
-     babelHelpers_inherits(TabbarSlideAnimator, _TabbarAnimator3);
+     babelHelpers.inherits(TabbarSlideAnimator, _TabbarAnimator3);
 
      function TabbarSlideAnimator(options) {
-       babelHelpers_classCallCheck(this, TabbarSlideAnimator);
+       babelHelpers.classCallCheck(this, TabbarSlideAnimator);
 
        options.timing = options.timing !== undefined ? options.timing : 'ease-in';
        options.duration = options.duration !== undefined ? options.duration : '0.15';
        options.delay = options.delay !== undefined ? options.delay : '0';
 
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(TabbarSlideAnimator).call(this, options));
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TabbarSlideAnimator).call(this, options));
      }
 
      /**
@@ -31252,7 +31292,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       * @param {jqLite} leavePage
       */
 
-     babelHelpers_createClass(TabbarSlideAnimator, [{
+     babelHelpers.createClass(TabbarSlideAnimator, [{
        key: 'apply',
        value: function apply(enterPage, leavePage, enterIndex, leaveIndex, done) {
          var sgn = enterIndex > leaveIndex;
@@ -31280,7 +31320,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      return TabbarSlideAnimator;
    })(TabbarAnimator);
 
-   var scheme$23 = {
+   var scheme$24 = {
      '.tab-bar__content': 'tab-bar--*__content',
      '.tab-bar': 'tab-bar--*'
    };
@@ -31330,14 +31370,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    })();
 
    var TabbarElement = (function (_BaseElement) {
-     babelHelpers_inherits(TabbarElement, _BaseElement);
+     babelHelpers.inherits(TabbarElement, _BaseElement);
 
      function TabbarElement() {
-       babelHelpers_classCallCheck(this, TabbarElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(TabbarElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, TabbarElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TabbarElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(TabbarElement, [{
+     babelHelpers.createClass(TabbarElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._tabbarId = generateId$2();
@@ -31351,7 +31391,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
          this._compile();
          this._contentElement = util.findChild(this, '.tab-bar__content');
-         ModifierUtil.initModifier(this, scheme$23);
+         ModifierUtil.initModifier(this, scheme$24);
        }
      }, {
        key: '_compile',
@@ -31537,6 +31577,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
            this._oldPageElement = element;
            var animator = this._animatorFactory.newAnimator(options);
 
+           if (oldPageElement !== internal.nullElement) {
+             oldPageElement._hide();
+           }
+
            animator.apply(element, oldPageElement, options.selectedTabIndex, options.previousTabIndex, function () {
              if (oldPageElement !== internal.nullElement) {
                if (options._removeElement) {
@@ -31545,7 +31589,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                  });
                } else {
                  oldPageElement.style.display = 'none';
-                 oldPageElement._hide();
                }
              }
 
@@ -31778,7 +31821,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        key: 'attributeChangedCallback',
        value: function attributeChangedCallback(name, last, current) {
          if (name === 'modifier') {
-           return ModifierUtil.onModifierChanged(last, current, this, scheme$23);
+           return ModifierUtil.onModifierChanged(last, current, this, scheme$24);
          }
        }
      }]);
@@ -31813,14 +31856,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var defaultInnerTemplateSource = util.createElement('\n  <div>\n    <div class="tab-bar__icon">\n      <ons-icon icon="ion-cloud" style="font-size: 28px; line-height: 34px; vertical-align: top;"></ons-icon>\n    </div>\n    <div class="tab-bar__label">label</div>\n  </div>\n');
 
    var TabElement = (function (_BaseElement) {
-     babelHelpers_inherits(TabElement, _BaseElement);
+     babelHelpers.inherits(TabElement, _BaseElement);
 
      function TabElement() {
-       babelHelpers_classCallCheck(this, TabElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(TabElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, TabElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TabElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(TabElement, [{
+     babelHelpers.createClass(TabElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this._compile();
@@ -32099,14 +32142,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    });
 
    var TemplateElement = (function (_BaseElement) {
-     babelHelpers_inherits(TemplateElement, _BaseElement);
+     babelHelpers.inherits(TemplateElement, _BaseElement);
 
      function TemplateElement() {
-       babelHelpers_classCallCheck(this, TemplateElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(TemplateElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, TemplateElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TemplateElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(TemplateElement, [{
+     babelHelpers.createClass(TemplateElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.template = this.innerHTML;
@@ -32135,14 +32178,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    var scheme$17 = { '': 'toolbar-button--*' };
 
    var ToolbarButtonElement = (function (_BaseElement) {
-     babelHelpers_inherits(ToolbarButtonElement, _BaseElement);
+     babelHelpers.inherits(ToolbarButtonElement, _BaseElement);
 
      function ToolbarButtonElement() {
-       babelHelpers_classCallCheck(this, ToolbarButtonElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ToolbarButtonElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ToolbarButtonElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ToolbarButtonElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ToolbarButtonElement, [{
+     babelHelpers.createClass(ToolbarButtonElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          this.classList.add('toolbar-button');
@@ -32172,14 +32215,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    };
 
    var ToolbarElement = (function (_BaseElement) {
-     babelHelpers_inherits(ToolbarElement, _BaseElement);
+     babelHelpers.inherits(ToolbarElement, _BaseElement);
 
      function ToolbarElement() {
-       babelHelpers_classCallCheck(this, ToolbarElement);
-       return babelHelpers_possibleConstructorReturn(this, Object.getPrototypeOf(ToolbarElement).apply(this, arguments));
+       babelHelpers.classCallCheck(this, ToolbarElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ToolbarElement).apply(this, arguments));
      }
 
-     babelHelpers_createClass(ToolbarElement, [{
+     babelHelpers.createClass(ToolbarElement, [{
        key: 'createdCallback',
        value: function createdCallback() {
          var _this2 = this;
@@ -32350,6 +32393,112 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    window.OnsToolbarElement = document.registerElement('ons-toolbar', {
      prototype: ToolbarElement.prototype
+   });
+
+   var scheme$19 = {
+     '.range': 'range--*',
+     '.range__left': 'range--*__left'
+   };
+
+   var INPUT_ATTRIBUTES$1 = ['autofocus', 'disabled', 'inputmode', 'max', 'min', 'name', 'placeholder', 'readonly', 'size', 'step', 'validator', 'value'];
+
+   var MaterialInputElement$1 = (function (_BaseElement) {
+     babelHelpers.inherits(MaterialInputElement, _BaseElement);
+
+     function MaterialInputElement() {
+       babelHelpers.classCallCheck(this, MaterialInputElement);
+       return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(MaterialInputElement).apply(this, arguments));
+     }
+
+     babelHelpers.createClass(MaterialInputElement, [{
+       key: 'createdCallback',
+       value: function createdCallback() {
+         this._compile();
+         ModifierUtil.initModifier(this, scheme$19);
+         this._updateBoundAttributes();
+         this._onChange();
+       }
+     }, {
+       key: '_compile',
+       value: function _compile() {
+         this.innerHTML = '\n      <input type="range" class="range">\n      <div class="range__left"></div>\n    ';
+       }
+     }, {
+       key: '_onChange',
+       value: function _onChange() {
+         this._left.style.width = 100 * this._ratio + '%';
+       }
+     }, {
+       key: 'attributeChangedCallback',
+       value: function attributeChangedCallback(name, last, current) {
+         if (name === 'modifier') {
+           ModifierUtil.onModifierChanged(last, current, this, scheme$19);
+         } else if (INPUT_ATTRIBUTES$1.indexOf(name) >= 0) {
+           this._updateBoundAttributes();
+
+           if (name === 'min' || name === 'max') {
+             this._onChange();
+           }
+         }
+       }
+     }, {
+       key: 'attachedCallback',
+       value: function attachedCallback() {
+         this.addEventListener('input', this._onChange);
+       }
+     }, {
+       key: 'detachedCallback',
+       value: function detachedCallback() {
+         this.removeEventListener('input', this._onChange);
+       }
+     }, {
+       key: '_updateBoundAttributes',
+       value: function _updateBoundAttributes() {
+         var _this2 = this;
+
+         INPUT_ATTRIBUTES$1.forEach(function (attr) {
+           if (_this2.hasAttribute(attr)) {
+             _this2._input.setAttribute(attr, _this2.getAttribute(attr));
+           } else {
+             _this2._input.removeAttribute(attr);
+           }
+         });
+       }
+     }, {
+       key: '_ratio',
+       get: function get() {
+         // Returns the current ratio.
+         var min = this._input.min === '' ? 0 : parseInt(this._input.min);
+         var max = this._input.max === '' ? 100 : parseInt(this._input.max);
+
+         return (this.value - min) / (max - min);
+       }
+     }, {
+       key: '_input',
+       get: function get() {
+         return this.querySelector('input');
+       }
+     }, {
+       key: '_left',
+       get: function get() {
+         return this.querySelector('.range__left');
+       }
+     }, {
+       key: 'value',
+       get: function get() {
+         return this._input.value;
+       },
+       set: function set(val) {
+         this._input.value = val;
+         this._onChange();
+         return this._input.val;
+       }
+     }]);
+     return MaterialInputElement;
+   })(BaseElement);
+
+   window.OnsRangeElement = document.registerElement('ons-range', {
+     prototype: MaterialInputElement$1.prototype
    });
 
    ons$1._util = util;
@@ -42019,39 +42168,41 @@ if (process.env.NODE_ENV !== 'production' && inBrowser) {
 module.exports = Vue;
 }).call(this,require('_process'))
 },{"_process":5}],7:[function(require,module,exports){
+'use strict';
+
 var Vue = require('vue');
 var onsen = require('onsenui');
 var Firebase = require('firebase');
 var Chart = require('chart.js');
 var $ = require('jquery');
 
-Vue.config.silent = true
+Vue.config.silent = true;
 
-var celsiusToFahrenheit = function(celsius) {
+var _celsiusToFahrenheit = function _celsiusToFahrenheit(celsius) {
   return Number(1.8 * celsius + 32).toFixed(2);
-}
+};
 
 var globalData = {
-  date: (function() {
+  date: function () {
     var d = new Date();
     var yyyy = d.getFullYear().toString();
-    var mm = (d.getMonth()+1).toString(); // getMonth() is zero-based
-    var dd  = d.getDate().toString();
-    return [yyyy, (mm[1]?mm:'0'+mm[0]), (dd[1]?dd:'0'+dd[0])].join('-'); // padding
-  })(),
+    var mm = (d.getMonth() + 1).toString();
+    var dd = d.getDate().toString();
+    return [yyyy, mm[1] ? mm : '0' + mm[0], dd[1] ? dd : '0' + dd[0]].join('-');
+  }(),
   scale: 'celsius',
   temperature: 0.0
-}
+};
 
 var dateSelectDialog = new Vue({
   el: '#date-select-dialog',
   data: globalData,
   methods: {
-    show: function() {
+    show: function show() {
       this.$el.show();
     },
 
-    hide: function() {
+    hide: function hide() {
       this.$el.hide();
     }
   }
@@ -42061,17 +42212,17 @@ var settingsDialog = new Vue({
   el: '#settings-dialog',
   data: globalData,
   methods: {
-    show: function() {
+    show: function show() {
       this.$el.show();
     },
 
-    hide: function() {
+    hide: function hide() {
       this.$el.hide();
     }
   }
 });
 
-$(document).on('init', '#app', function() {
+$(document).on('init', '#app', function () {
   var app = new Vue({
     el: '#app',
 
@@ -42081,24 +42232,24 @@ $(document).on('init', '#app', function() {
   });
 });
 
-$(document).on('init', '#temp', function() {
+$(document).on('init', '#temp', function () {
   var app = new Vue({
     el: '#current-temperature',
     data: globalData,
 
-    created: function() {
+    created: function created() {
       this.firebaseRef = new Firebase("https://fish-tank.firebaseio.com/temperature").orderByChild('timestamp').limitToLast(1);
-      this.fetchTemperature()
+      this.fetchTemperature();
     },
 
     methods: {
-      fetchTemperature: function() {
+      fetchTemperature: function fetchTemperature() {
         var self = this;
 
-        this.firebaseRef.on('value', function(snapshot) {
+        this.firebaseRef.on('value', function (snapshot) {
           var val = snapshot.val();
 
-          for (key in val) {
+          for (var key in val) {
             if (val.hasOwnProperty(key)) {
               self.temperature = val[key].temperature;
             }
@@ -42106,40 +42257,39 @@ $(document).on('init', '#temp', function() {
         });
       },
 
-      celsiusToFahrenheit: function(celsius) {
-        return celsiusToFahrenheit(celsius);
+      celsiusToFahrenheit: function celsiusToFahrenheit(celsius) {
+        return _celsiusToFahrenheit(celsius);
       },
 
-      beforeDestroy: function() {
+      beforeDestroy: function beforeDestroy() {
         this.firebaseRef.off('value');
       }
     }
   });
 
-  $(this).one('destroy', function() {
+  $(this).one('destroy', function () {
     app.$destroy(true);
     app = undefined;
   });
 });
 
-$(document).on('init', '#stats', function() {
+$(document).on('init', '#stats', function () {
   var app = new Vue({
     el: '#stats',
 
     data: globalData,
 
-    created: function() {
+    created: function created() {
       this.firebaseRef = new Firebase("https://fish-tank.firebaseio.com/temperature").orderByChild('timestamp');
 
       var labels = [],
-        values = [];
+          values = [];
 
       for (var i = 0; i < 24; i++) {
         for (var j = 0; j <= 45; j += 15) {
           if (i % 2 === 0 && j == 0) {
-            labels.push((('0' + i).slice(-2) + ':' + ('0' + j).slice(-2)));
-          }
-          else {
+            labels.push(('0' + i).slice(-2) + ':' + ('0' + j).slice(-2));
+          } else {
             labels.push('');
           }
           values.push(0.0);
@@ -42179,35 +42329,34 @@ $(document).on('init', '#stats', function() {
         maintainAspectRatio: false,
         scaleLabel: ' <%= Number(value).toFixed(0) %>'
       };
-
     },
 
-    compiled: function() {
+    compiled: function compiled() {
       var ctx = document.getElementById('temperature-chart').getContext('2d');
       this.chart = new Chart(ctx).Line(this.chartData, this.chartOptions);
       this.renderChart();
     },
 
     watch: {
-      'date': function() {
+      'date': function date() {
         this.renderChart();
       },
-      'scale': function() {
+      'scale': function scale() {
         this.renderChart();
       }
     },
 
     methods: {
-      showDateSelectDialog: function() {
+      showDateSelectDialog: function showDateSelectDialog() {
         dateSelectDialog.show();
       },
 
-      renderChart: function() {
+      renderChart: function renderChart() {
         var from = new Date(Date.parse(this.date)).setHours(0);
         var to = new Date(Date.parse(this.date)).setHours(24);
         var self = this;
 
-        this.firebaseRef.startAt(from).endAt(to).on('value', function(snapshot) {
+        this.firebaseRef.startAt(from).endAt(to).on('value', function (snapshot) {
           var inc = 1000 * 60 * 15;
           var points = {};
 
@@ -42215,37 +42364,36 @@ $(document).on('init', '#stats', function() {
             points[i] = 0.0;
           }
 
-          snapshot.forEach(function(child) {
+          snapshot.forEach(function (child) {
             var v = child.val();
             var ts = v.timestamp;
 
-            ts = ts - (ts % inc);
+            ts = ts - ts % inc;
             points[ts] = v.temperature;
           });
 
-          var data = Object.keys(points).map(function(k) { return points[k]; });
+          var data = Object.keys(points).map(function (k) {
+            return points[k];
+          });
 
           points = self.chart.datasets[0].points;
 
           for (var i = 0; i < points.length; i++) {
-            points[i].value = self.scale === 'celsius' || data[i] === 0.0 ?
-              data[i] :
-              celsiusToFahrenheit(data[i]);
-
+            points[i].value = self.scale === 'celsius' || data[i] === 0.0 ? data[i] : _celsiusToFahrenheit(data[i]);
           }
 
           self.chart.update();
         });
       },
 
-      beforeDestroy: function() {
+      beforeDestroy: function beforeDestroy() {
         this.firebaseRef.off('value');
         this.firebaseRef = undefined;
       }
     }
   });
 
-  $(this).one('destroy', function() {
+  $(this).one('destroy', function () {
     app.$destroy(true);
     app = undefined;
   });
