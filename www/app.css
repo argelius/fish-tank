@@ -40,12 +40,22 @@
   width: 270px;
 }
 
-#temperature-chart {
-  width: 90%;
+#temperature-chart-container {
   margin: 10px;
-  height: 250px;
+  height: 50%;
 }
 
 .fab__icon {
   position: initial;
+}
+
+#current-temperature {
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  width: 100%
+}
+
+#current-temperature > h3 {
+  margin-top: 0;
 }

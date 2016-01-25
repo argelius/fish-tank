@@ -4,6 +4,8 @@ var Firebase = require('firebase');
 var Chart = require('chart.js');
 var $ = require('jquery');
 
+Vue.config.silent = true
+
 var celsiusToFahrenheit = function(celsius) {
   return Number(1.8 * celsius + 32).toFixed(2);
 }
@@ -151,7 +153,10 @@ $(document).on('init', '#stats', function() {
         pointHitDetectionRadius: 0,
         datasetStroke: true,
         datasetStrokeWidth: 2,
-        datasetFill: true
+        datasetFill: true,
+        responsive: true,
+        maintainAspectRatio: false,
+        scaleLabel: ' <%= Number(value).toFixed(0) %>'
       };
 
     },
